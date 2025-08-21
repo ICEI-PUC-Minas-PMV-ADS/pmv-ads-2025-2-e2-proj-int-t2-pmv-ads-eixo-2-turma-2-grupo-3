@@ -17,7 +17,7 @@ Além disso, conectar consultórios médicos com seus médicos voluntários para
 * Caio Rezende Costa
 * Gustavo de Figueiredo Souza Oliveira
 * Raphael Alexis Biver
-* Thais Lellis Moreira
+* Thais Lellis Moreira(https://github.com/thaislellis)  
 * Vitor Reck Tavares
 
 ## Orientador
