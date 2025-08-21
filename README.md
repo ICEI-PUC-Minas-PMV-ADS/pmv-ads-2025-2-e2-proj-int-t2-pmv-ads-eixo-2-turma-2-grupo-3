@@ -18,7 +18,7 @@ Além disso, conectar consultórios médicos com seus médicos voluntários para
 * Gustavo de Figueiredo Souza Oliveira
 * Raphael Alexis Biver
 * [Thais Lellis Moreira](https://github.com/thaislellis)
-* Vitor Reck Tavares
+* [Vitor Reck Tavares](https://github.com/vitor-reck)
 
 ## Orientador
 
