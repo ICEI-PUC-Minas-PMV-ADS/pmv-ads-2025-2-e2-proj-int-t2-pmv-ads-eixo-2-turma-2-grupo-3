@@ -1,34 +1,32 @@
-# TÍTULO DO PROJETO
+# Cuida+
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de uma Aplicação Interativa`
 
-`SEMESTRE`
+`Eixo 2`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto Cuida+ tem como objetivo desenvolver uma plataforma de agendamento de consultas gratuitas sob campanhas, promovendo a saúde e bem-estar para famílias que possuem cadastro no CAD Único. A aplicação busca oferecer uma solução prática e acessível para agendar, cancelar e remarcar consultas médicas. 
+
+
+Além disso, conectar consultórios médicos com seus médicos voluntários para divulgar campanhas atendendo as famílias vulneráveis, compatível com objetivo 3.8 da Objetivos de Desenvolvimento Sustentável (ODS): - <i>"Atingir a cobertura universal de saúde, incluindo a proteção do risco financeiro, o acesso a serviços de saúde essenciais de qualidade e o acesso a medicamentos e vacinas essenciais seguros, eficazes, de qualidade e a preços acessíveis para todos".</i>
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Breno Eller Andrade Machado
+* Caio Rezende Costa
+* Gustavo de Figueiredo Souza Oliveira
+* Raphael Alexis Biver
+* Thais Lellis Moreira
+* Vitor Reck Tavares
 
 ## Orientador
 
-* Nome completo do professor
+* José Wilson da Costa
 
 ## Instruções de Instalação, Execução e Acesso
 
-**Acesso rápido (produção)**
-* URL da aplicação: https://seu-dominio.com/caminho
-* Status: online / instável / em manutenção (atualize conforme o caso)
-* Ambiente: produção / homologação
-
-**Usuário(s) de teste (se houver):**
-* Login: usuario_teste
-* Senha: senha_teste
+Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
 
 # Documentação
 
