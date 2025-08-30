@@ -53,31 +53,26 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| A aplicação deve permitir que o usuário avalie uma agência de intercâmbio com base na sua experiência| ALTA | 
-|RF-002| A aplicação deve permitir que o usuário inclua comentários ao fazer uma avaliação de uma agência de intercâmbio    | ALTA |
-|RF-003| A aplicação deve permitir que o usuário consulte todas as agências de intercâmbio cadastradas ordenando-as com base em suas notas | ALTA |
+|RF-01| O paciente deve poder cadastrar, consultar, alterar e excluir seu usuário no sistema | MEDIA | 
+|RF-02| O paciente deve poder agendar, consultar e cancelar suas consultas médicas no sistema | ALTA |
+|RF-03| O consultório médico deve poder cadastrar, consultar, alterar e excluir seu usuário no sistema | MEDIA |
+|RF-04| O consultório médico deve poder cadastrar, consultar, alterar e excluir médicos do sistema | MEDIA |
+|RF-05| O consultório médico deve poder cadastrar, consultar, alterar e excluir campanhas do sistema | MEDIA |
+|RF-06| O médico voluntário deve poder cadastrar, consultar, alterar e excluir seu usuário no sistema | MEDIA |
+|RF-07| O médico voluntário deve poder aderir campanhas, consultar e remarcar consultas médicas no sistema | ALTA |
+|RF-08| O sistema deve consultar os CNPJ na base de dados para validação de consultórios médicos no cadastro de usuário | MEDIA |
+|RF-09| O sistema deve consultar os CAD únicos na base de dados para validação de pacientes no cadastro de usuário | MEDIA |
+|RF-10| O sistema deve consultar os CRM na base de dados para validação de médicos no cadastro de usuário | MEDIA |
+|RF-11| O sistema deve filtrar médicos por campanha, especialidade, data e horário no agendamento de consultas | ALTA |
+|RF-12| O sistema deve ter autenticação básica (HTTP Basic) | BAIXA |
+|RF-13| O sistema deve ter mecanismo de alteração de senha via envio de e-mail | BAIXA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
 |RNF-001| A aplicação deve ser responsiva | MÉDIA | 
-|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA |
 
 ## Restrições
 
@@ -86,14 +81,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+|02| Deverá ser desenvolvida uma aplicação interativa: frontend e backend |
+|03| O backend é obrigatório ser desenvolvido no framework ASP.NET com a linguagem C# |
+|04| O backend é obrigatório ter arquitetura monolítica |
 
 ## Diagrama de Casos de Uso
 
