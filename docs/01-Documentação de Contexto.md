@@ -1,6 +1,6 @@
-# Introdução
+# Contexto
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+O acesso à saúde é um direito fundamental garantido pela Constituição Federal, mas ainda enfrenta grandes desafios no Brasil, especialmente entre famílias em situação de vulnerabilidade social e financeira. Apesar do grande apoio do Sistema Único de Saúde (SUS), milhões de brasileiros ainda convivem com longas filas de espera, falta de recursos e até de didática que dificultam a marcação de consultas médicas. Diante desse cenário, é essencial buscar soluções tecnológicas que ampliem o acesso, aproximem pacientes de profissionais e promovam inclusão social por meios mais acessíveis.  
 
 ## Problema
 A dificuldade de acesso a saúde de excelência faz parte da realidade de 25% da população (50,9 milhões de pessoas) que utilizam o SUS. Tanto as pessoas que sofrem com as longas esperas ou que dependem de meios não regulamentados, se veem na dificuldade para marcar consultas médicas e com as más condições oferecidas por essas alternativas.  
