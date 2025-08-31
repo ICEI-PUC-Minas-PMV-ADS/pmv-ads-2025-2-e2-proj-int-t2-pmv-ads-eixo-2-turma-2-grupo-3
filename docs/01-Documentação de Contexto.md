@@ -16,21 +16,21 @@ Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thin
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+### Objetivo Geral: 
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Desenvolver uma aplicação de agendamento de consultas médicas que conecte pessoas em situação de vulnerabilidade econômica a médicos dispostos a oferecer atendimentos a baixo custo, promovendo acesso inclusivo à saúde e contribuindo para a redução das desigualdades sociais. 
+
+### Objetivos Específicos:  
+
+> - Facilitar a busca e o agendamento de consultas médicas por meio de uma plataforma digital simples e acessível; 
+> - Oferecer uma interface intuitiva que atenda às necessidades de usuários com diferentes níveis de familiaridade tecnológica; 
+> - Promover a inclusão social, reduzindo barreiras econômicas no acesso a serviços de saúde; 
+> - Engajar profissionais da área médica em ações de responsabilidade social, incentivando atendimentos de baixo custo; 
+> - Contribuir para o cumprimento dos Objetivos de Desenvolvimento Sustentável da ONU, especialmente o ODS nº 3 (Saúde e Bem-Estar) e o ODS nº 10 (Redução das Desigualdades); 
 
 ## Justificativa
 
-Explique de forma clara a relevância da aplicação escolhida, justificando os objetivos específicos e os aspectos do software que serão aprofundados, e quantifique o impacto do problema com dados concretos (números, percentuais, indicadores) obtidos por bases oficiais ou outras fontes confiáveis, sempre citadas no padrão ABNT (no formato [Numérico] ou (AUTOR, ANO)).
-
-**Relacione o problema aos Objetivos de Desenvolvimento Sustentável (ODS), indicando quais ODS e subobjetivos são atendidos e descrevendo como o projeto contribui para cada um deles, garantindo coerência entre o impacto mensurado e as metas selecionadas.**
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+O que impulsionou a realização deste trabalho foi compreender que grande parte da população tem acesso restrito à saúde de qualidade. Isso ocorre, em parte, devido aos elevados preços das consultas para o paciente; além disso, o serviço público tende a ser moroso e até ineficiente. Nesse sentido, o projeto propõe o desenvolvimento de uma aplicação de software de agendamento que conecte pacientes de baixa renda a médicos dispostos a oferecer consultas a preços acessíveis, simplificando o processo de marcação e ampliando o acesso ao atendimento. O sistema destina-se a pessoas que necessitam de consultas médicas a baixo custo e a profissionais da saúde que desejam atender esse público de forma prática e organizada. A proposta fundamenta-se em estudos sobre inclusão digital, acessibilidade a serviços essenciais e nos princípios de análise e desenvolvimento de sistemas, que são a base para validar e sustentar as ideias apresentadas, alinhando-se ainda ao Objetivo de Desenvolvimento Sustentável nº 3 da ONU (Saúde e Bem-Estar) e ao ODS nº 10 (Redução das Desigualdades), os quais reforçam a necessidade de soluções inovadoras para ampliar o acesso à saúde de forma justa e inclusiva. 
 
 ## Público-Alvo
 
