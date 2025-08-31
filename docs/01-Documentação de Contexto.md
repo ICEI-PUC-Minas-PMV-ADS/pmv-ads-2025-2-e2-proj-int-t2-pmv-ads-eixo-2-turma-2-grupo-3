@@ -22,11 +22,11 @@ Desenvolver uma aplicação de agendamento de consultas médicas que conecte pes
 
 ### Objetivos Específicos:  
 
-> - Facilitar a busca e o agendamento de consultas médicas por meio de uma plataforma digital simples e acessível; 
-> - Oferecer uma interface intuitiva que atenda às necessidades de usuários com diferentes níveis de familiaridade tecnológica; 
-> - Promover a inclusão social, reduzindo barreiras econômicas no acesso a serviços de saúde; 
-> - Engajar profissionais da área médica em ações de responsabilidade social, incentivando atendimentos de baixo custo; 
-> - Contribuir para o cumprimento dos Objetivos de Desenvolvimento Sustentável da ONU, especialmente o ODS nº 3 (Saúde e Bem-Estar) e o ODS nº 10 (Redução das Desigualdades); 
+* Facilitar a busca e o agendamento de consultas médicas por meio de uma plataforma digital simples e acessível; 
+* Oferecer uma interface intuitiva que atenda às necessidades de usuários com diferentes níveis de familiaridade tecnológica; 
+* Promover a inclusão social, reduzindo barreiras econômicas no acesso a serviços de saúde; 
+* Engajar profissionais da área médica em ações de responsabilidade social, incentivando atendimentos de baixo custo; 
+* Contribuir para o cumprimento dos Objetivos de Desenvolvimento Sustentável da ONU, especialmente o ODS nº 3 (Saúde e Bem-Estar) e o ODS nº 10 (Redução das Desigualdades); 
 
 ## Justificativa
 
