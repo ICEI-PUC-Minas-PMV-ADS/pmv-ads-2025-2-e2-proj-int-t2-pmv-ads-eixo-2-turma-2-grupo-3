@@ -71,8 +71,15 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| A aplicação deve ser responsiva | MÉDIA | 
-|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA |
+|RNF-001|  O sistema deve as senhas de usuários criptografadas em sua base de dados | BAIXA | 
+|RNF-002| O sistema deve suportar mil usuários simultâneos |  MEDIA |
+|RNF-003| O sistema deve ser de fácil usabilidade e responsiva  |  ALTA  |
+|RNF-004|O sistema deverá ter alta disponibilidade em 98% do tempo  |  ALTA |
+|RNF-005| O sistema deverá ser escalável  |  BAIXA |
+|RNF-006|O sistema deverá executar em duas plataformas: mobile e desktop|  MEDIA |
+|RNF-007|O sistema será desenvolvido na linguagem C# com framework ASP.NET|  ALTA |
+|RNF-008| O sistema deverá se comunicar com banco de dados PostgreSQL  |  ALTA |
+
 
 ## Restrições
 
@@ -97,3 +104,12 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Lucidchart](https://www.lucidchart.com/)
 > - [Astah](https://astah.net/)
 > - [Diagrams](https://app.diagrams.net/)
+
+Paciente
+<img width="975" height="533" alt="Diagrama casos de uso" src="https://github.com/user-attachments/assets/9876bfd6-6fb2-462e-b168-ddd4be241f99" />
+
+Médico
+![Diagrama casos de uso (4)](https://github.com/user-attachments/assets/74cf18bc-e516-4c7f-98d2-9f5db12b4fb6)
+
+Consultório
+![Diagrama casos de uso (5)](https://github.com/user-attachments/assets/e3e26ca4-cf7c-49f4-9c8d-d27646df0370)
