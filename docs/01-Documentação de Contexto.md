@@ -4,7 +4,15 @@ O acesso à saúde é um direito fundamental garantido pela Constituição Feder
 
 ## Problema
 A dificuldade de acesso a saúde de excelência faz parte da realidade de 25% da população (50,9 milhões de pessoas) que utilizam o SUS. Tanto as pessoas que sofrem com as longas esperas ou que dependem de meios não regulamentados, se veem na dificuldade para marcar consultas médicas e com as más condições oferecidas por essas alternativas.  
- 
+
+  Os problemas que a solução pretende solucionar são: dificuldade em 
+agendar, remarcar ou cancelar consultas de forma simples e acessível.
+
+* Longas filas de espera que atrasam tratamentos e cuidados preventivos; 
+* Dependência de alternativas não regulamentadas, com risco à saúde da 
+população;
+* Continuação das desigualdades sociais devido à falta de acesso digno e eficiente 
+aos serviços médicos;
 
 ## Objetivos
 
