@@ -45,6 +45,42 @@ Apresente aqui as histórias de usuário que são relevantes para o projeto de s
 > - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
 > - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
 
+## Perfis de Usuários
+
+### Perfil Médico
+**Descrição:**  
+Profissional de saúde disposto a atender pacientes vulneráveis  .
+
+**Necessidades:**  
+Visualizar e aderir campanhas, visualizar e remarcar agendamentos de consultas médicas .
+
+### Perfil Paciente
+**Descrição:**  
+Acesso rápido, fácil e gratuito a consultas médicas  .
+
+**Necessidades:**  
+Agendamento e cancelamento de consultas gratuitas .
+
+### Perfil Consultório médico
+**Descrição:**  
+Fazer a conexão entre médico e paciente de forma gratuita, fácil e controlada.
+
+**Necessidades:**  
+Criar e gerenciar campanhas, gerenciar médicos voluntários em suas campanhas.
+
+## Histórias de Usuários
+
+| EU COMO... `QUEM`               | QUERO/DESEJO ... `O QUE`                                    | PARA ... `PORQUE`                                                    |
+|---------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------|
+| Eu como paciente de baixa renda | quero visualizar consultas médicas                          | para obter mais informações em relação a minha consulta              |
+| Eu como paciente de baixa renda | quero agendar ou cancelar consultas                         | para ser atendido e sanado meus problemas de saúde                   |
+| Eu como consultório médico      | desejo criar, alterar e excluir campanhas de saúde          | para atender a população vulnerável                                  |
+| Eu como consultório médico      | quero criar, visualizar, editar e excluir contas de médicos | para gerenciar contas médicas que prestam atendimento                |
+| Eu como médico                  | desejo visualizar e cancelar consultas médicas              | para ajudar essas pessoas a terem acesso à saúde básica              |
+| Eu como médico                  | quero aderir campanhas de consultas médicas gratuitas       | para disponibilizar do meu tempo para ajudar pacientes necessitados  |
+
+
+
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
