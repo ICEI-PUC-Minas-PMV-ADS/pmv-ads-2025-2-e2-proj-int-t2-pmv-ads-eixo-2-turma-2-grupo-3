@@ -53,3 +53,15 @@ Assim que a primeira versão do sistema estiver disponível, deverá complementa
 # Apresentação
 
 <li><a href="docs/12-Apresentação do Projeto.md"> Apresentação do Projeto</a></li>
+
+# Quadro Kanban, Roadmap e Retrospectiva
+
+* [Kanban](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/2114/views/1)
+* [Roadmap](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/2114/views/4)
+* [Retrospectiva](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/2116/views/1)
+
+# Padrões de Projeto
+
+* [Commit Guidelines](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/COMMIT_GUIDELINES.md)
+* [Estilo de código](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/CODE_STYLE.md)
+* [Arquitetura](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/REPO_ARCHITECTURE.md)
