@@ -6,7 +6,177 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 
 Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
 
-## Perfis de Usuários
+# PERSONA 1
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+     alt="Persona1" width="400"/>
+
+### João Silva 
+
+Idade: 42 anos
+
+Profissão: Trabalhador autônomo (pintor de paredes)
+
+Localização: Contagem, MG
+
+Formação: Ensino fundamental incompleto
+
+Objetivo: Ter acesso a consultas médicas gratuitas e rápidas. 
+
+## Descrição:
+João é um trabalhador autônomo que não tem condições financeiras de manter um plano de saúde. Depende exclusivamente do SUS, mas enfrenta dificuldades com filas longas e demora para consultas. Ele busca alternativas mais ágeis e acessíveis.
+
+## Dores:
+
+Dificuldade para conseguir consultas pelo SUS.
+
+Não tem tempo para esperar horas em postos de saúde.
+
+Pouca familiaridade com tecnologia.
+
+## Expectativas:
+
+Um sistema simples, rápido e gratuito para marcar consultas.
+
+Sentir confiança no serviço, sem burocracia.
+
+# PERSONA 2
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+     alt="Persona1" width="400"/>
+
+### Médica Voluntária – Dra. Mariana Rocha
+
+Idade: 34 anos
+
+Profissão: Médica clínica geral
+
+Localização: Belo Horizonte, MG
+
+Formação: Medicina pela UFMG, residência em Clínica Geral
+
+Objetivo: Contribuir com a sociedade oferecendo consultas gratuitas. 
+
+## Descrição:
+Dra. Mariana atua em um hospital particular, mas sente falta de devolver à sociedade parte do que conquistou. Quer participar de campanhas sociais oferecendo consultas para pacientes carentes.
+
+## Dores:
+
+Dificuldade em encontrar plataformas confiáveis de voluntariado.
+
+Falta de organização em campanhas de saúde comunitária.
+
+Desejo de ter clareza sobre pacientes e horários.
+
+## Expectativas:
+
+Plataforma organizada para visualizar pacientes e horários.
+
+Agendamento simples e possibilidade de cancelamento fácil.
+
+# PERSONA 3
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+     alt="Persona1" width="400"/>
+
+### Gestora de Consultório – Carla Menezes
+
+Idade: 40 anos
+
+Profissão: Administradora de consultório médico
+
+Localização: São Paulo, SP
+
+Formação: Administração de Empresas
+
+Objetivo: Organizar campanhas de saúde gratuitas para a comunidade. 
+
+## Descrição:
+Carla gerencia um consultório que deseja participar de campanhas sociais como forma de responsabilidade social. Precisa de um sistema que conecte médicos voluntários e pacientes de baixa renda.
+
+## Dores:
+
+Falta de ferramentas práticas para gerenciar campanhas.
+
+Dificuldade em monitorar médicos voluntários.
+
+Pouco controle sobre agendamentos.
+
+## Expectativas:
+
+Criar campanhas de forma simples.
+
+Acompanhar médicos voluntários e seus atendimentos.
+
+# PERSONA 4
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+     alt="Persona1" width="400"/>
+
+### Estudante Universitária – Luana Ferreira
+
+Idade: 21 anos
+
+Profissão: Estudante de Enfermagem
+
+Localização: Salvador, BA
+
+Formação: Graduação em andamento
+
+Objetivo: Ter acompanhamento médico gratuito para manter saúde em dia. 
+
+## Descrição:
+Luana é estudante bolsista e não tem plano de saúde. Precisa de consultas básicas para manter acompanhamento médico, mas muitas vezes adia exames e atendimentos por falta de acesso.
+
+## Dores:
+
+Falta de dinheiro para consultas particulares.
+
+Dificuldade em agendar consultas no SUS devido à demora.
+
+Falta de informações sobre campanhas gratuitas.
+
+## Expectativas:
+
+Conseguir marcar consultas sem burocracia.
+
+Ter um histórico digital para acompanhar seus atendimentos.
+
+# PERSONA 5
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+     alt="Persona1" width="400"/>
+
+### Idosa Aposentada – Dona Maria Aparecida
+
+Idade: 68 anos
+
+Profissão: Aposentada (ex-professora de ensino fundamental)
+
+Localização: Recife, PE
+
+Formação: Magistério
+
+Objetivo: Acesso fácil a consultas médicas gratuitas para cuidar da saúde.
+
+## Descrição:
+Dona Maria depende da aposentadoria para viver e não tem condições de pagar convênio. Tem problemas de hipertensão e precisa de acompanhamento frequente.
+
+## Dores:
+
+Longa espera por consultas no SUS.
+
+Dificuldade em lidar com aplicativos complicados.
+
+Preocupação constante com saúde e medicamentos.
+
+Falta de informações sobre campanhas gratuitas.
+
+## Expectativas:
+
+Sistema simples, com botões grandes e intuitivos.
+
+Poder contar com apoio de familiares para agendar consultas.
+
+Segurança de que terá atendimento garantido.
+
+
+# Perfis de Usuários
 
 ### Perfil Médico
 **Descrição:**  
