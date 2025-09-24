@@ -7,7 +7,7 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
 
 # PERSONA 1
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/docs/img/joaoSilva.png" 
      alt="Persona1" width="400"/>
 
 ### João Silva 
@@ -40,7 +40,7 @@ Um sistema simples, rápido e gratuito para marcar consultas.
 Sentir confiança no serviço, sem burocracia.
 
 # PERSONA 2
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/docs/img/marianaRocha.png" 
      alt="Persona1" width="400"/>
 
 ### Médica Voluntária – Dra. Mariana Rocha
@@ -73,7 +73,7 @@ Plataforma organizada para visualizar pacientes e horários.
 Agendamento simples e possibilidade de cancelamento fácil.
 
 # PERSONA 3
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/docs/img/carlaMenezes.png" 
      alt="Persona1" width="400"/>
 
 ### Gestora de Consultório – Carla Menezes
@@ -106,7 +106,7 @@ Criar campanhas de forma simples.
 Acompanhar médicos voluntários e seus atendimentos.
 
 # PERSONA 4
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/docs/img/luanaFerreira.png" 
      alt="Persona1" width="400"/>
 
 ### Estudante Universitária – Luana Ferreira
@@ -139,7 +139,7 @@ Conseguir marcar consultas sem burocracia.
 Ter um histórico digital para acompanhar seus atendimentos.
 
 # PERSONA 5
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/IntApplicationProject-Template/blob/main/docs/img/AnaClara1.png" 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/main/docs/img/donaMaria.png" 
      alt="Persona1" width="400"/>
 
 ### Idosa Aposentada – Dona Maria Aparecida
