@@ -27,6 +27,17 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas d
 Os wireframes são protótipos utilizados no design de interfaces para representar a estrutura de um site e o relacionamento entre suas páginas. Eles funcionam como ilustrações do layout e da disposição dos elementos essenciais da interface.
 
 Nesta seção, é FUNDAMENTAL indicar, para cada tela/wireframe proposto, quais requisitos do projeto estão sendo contemplados por aquela tela.
+
+# Wireframes
+
+## Requisito da tela: RF-07	- O médico voluntário deve poder aderir campanhas, consultar e remarcar consultas médicas no sistema
+![Exemplo de Diagrama de Fluxo](img/aderirCampanha.png)
+
+## Requisito da tela: RF-02 -	O paciente deve poder agendar, consultar e cancelar suas consultas médicas no sistema
+![Exemplo de Diagrama de Fluxo](img/agendarConsulta.png)
+
+## Requisito da tela: RF-05	- O consultório médico deve poder cadastrar, consultar, alterar e excluir campanhas do sistema
+![Exemplo de Diagrama de Fluxo](img/cadastrarCampanha.png)
  
 > **Links Úteis**:
 > - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
