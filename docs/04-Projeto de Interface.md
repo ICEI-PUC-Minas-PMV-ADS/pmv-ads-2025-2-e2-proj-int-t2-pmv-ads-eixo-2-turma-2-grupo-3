@@ -38,6 +38,22 @@ Nesta seção, é FUNDAMENTAL indicar, para cada tela/wireframe proposto, quais 
 
 ## Requisito da tela: RF-05	- O consultório médico deve poder cadastrar, consultar, alterar e excluir campanhas do sistema
 ![Exemplo de Diagrama de Fluxo](img/cadastrarCampanha.png)
+
+## Links do wireframe interativo
+
+### Todas as telas
+https://www.figma.com/design/eJwUkAUYGU4GgmvTJS8sp9/Cuida-?node-id=26-38&t=sHNMz5c3Qim0ovl9-0
+
+### Fluxo paciente
+https://www.figma.com/proto/eJwUkAUYGU4GgmvTJS8sp9/Cuida-?node-id=1-163&t=own1Bo5a3HUWQdHs-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=26%3A38&show-proto-sidebar=1
+
+### Fluxo do médico
+https://www.figma.com/proto/eJwUkAUYGU4GgmvTJS8sp9/Cuida-?node-id=61-3797&t=own1Bo5a3HUWQdHs-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=61%3A3797&show-proto-sidebar=1
+
+### Fluxo da clinica
+https://www.figma.com/proto/eJwUkAUYGU4GgmvTJS8sp9/Cuida-?node-id=63-390&t=own1Bo5a3HUWQdHs-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=26%3A38&show-proto-sidebar=1
+
+
  
 > **Links Úteis**:
 > - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
