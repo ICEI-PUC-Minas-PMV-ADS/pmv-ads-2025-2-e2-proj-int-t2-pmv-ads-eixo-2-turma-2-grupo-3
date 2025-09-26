@@ -1,71 +1,80 @@
 # Plano de Testes de Usabilidade
 
-Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
+1.	Introdução
+Este plano descreve os procedimentos para conduzir testes de usabilidade no sistema Cuida+, uma aplicação de agendamento de consultas médicas. O teste foca no usuário final (paciente e médico), avaliando a interface quanto à eficiência, eficácia, acessibilidade e satisfação.
 
-Um plano de teste de usabilidade deverá conter: 
+2.	Objetivo do Teste
+Avaliar se usuários conseguem marcar, remarcar e cancelar consultas com facilidade. Identificar pontos de confusão no fluxo de agendamento.
+Medir a clareza da interface na comunicação com o usuário.
+Coletar feedback para propor melhorias que aumentem a acessibilidade e a inclusão digital.
 
-## Definição do(s) objetivo(s)
+3.	Contextualização e Escopo
+O Cuida+ busca reduzir desigualdades no acesso à saúde, conectando pacientes de baixa renda a médicos e consultórios dispostos a oferecer consultas acessíveis.
+Escopo do teste: Avaliar a usabilidade da interface de marcação de consultas (pacientes) e da interface de gestão de horários (médicos).
+Não inclui performance de servidor, integrações com sistemas externos ou processos administrativos internos.
+4.	Metodologia
+4.1	Participantes
+Perfil:
+-	Pacientes: baixa renda com diferentes níveis de familiaridade tecnológica.
+-	Profissionais da saúde: médicos de consultórios.
 
-Antes de iniciar os testes, é essencial definir o que se deseja avaliar na usabilidade do sistema. 
-Alguns exemplos de objetivos são:
-- Verificar se os usuários conseguem concluir tarefas essenciais sem dificuldades.
-- Identificar barreiras na navegação e interação com o sistema.
-- Avaliar a eficiência e a satisfação do usuário ao utilizar a interface.
-- Testar a acessibilidade para diferentes perfis de usuários.
+4.2	Ambiente 
+Testes em computadores. feedback
 
-## Seleção dos participantes
+4.3	Tipo de Teste
+Teste moderado.
+Tarefas práticas.
+Avaliação das heurísticas de Nielsen.
 
-Para garantir que o teste reflita o uso real do sistema, escolha participantes representativos do público-alvo.
+5.	Cenários de Teste / Tarefas
+-	Paciente: criar conta e realizar login.
+-	Paciente: agendar uma consulta médica.
+-	Paciente: remarcar uma consulta já marcada.
+-	Paciente: cancelar uma consulta.
+-	Cadastro de Clínicas e liberação de horários referentes as campanhas.
+-	Médico: criar conta e realizar login.
+-	Médico: cadastrar disponibilidade de horários.
+-	Médico: visualizar agenda de consultas.
 
-**Critérios para selecionar participantes:**
-- Perfis variados (experientes e iniciantes no sistema).
-- Diferentes níveis de familiaridade com tecnologia.
-- Pessoas com necessidades especiais (se aplicável).
+6.	Heurísticas de Nielsen
+Serão avaliadas as 10 heurísticas em cada tarefa:
+1.	Visibilidade do status do sistema.
+2.	Correspondência com o mundo real.
+3.	Controle e liberdade.
+4.	Consistência e padrões.
+5.	Prevenção de erros.
+6.	Reconhecimento em vez de memorização.
+7.	Flexibilidade e eficiência.
+8.	Design estético e minimalista.
+9.	Ajuda para diagnóstico e recuperação de erros.
+10.	Ajuda e documentação.
 
-**Quantidade recomendada:**
-Mínimo: 5 participantes.
-Ideal: Entre 8 e 12 para maior diversidade.
+7.	Roteiro de Perguntas / Questionário Pós-Tarefa (Pouco a Muito satisfeito)
+Por tarefa:
+-	Foi fácil encontrar onde executar a ação?
+-	Alguma parte foi confusa?
+-	Quanto tempo você levou?
+-	O sistema explicou bem o que estava acontecendo?
+-	Qual sua satisfação com essa tarefa (1 a 5)? Ao final:
+-	Você confiaria no sistema para marcar consultas reais?
+-	Mudaria algo na interface?
+-	Indicaria o sistema para outras pessoas?
 
-## Definição de cenários de teste
+8.	Métricas e Critérios de Sucesso
+-	Taxa de conclusão   85%.
+-	Tempo médio de agendamento  2 minutos.
+-	Número de erros por usuário  2 por tarefa.
+-	Colocar uma pontuação média 
 
-Os cenários representam tarefas reais que os usuários executam no sistema. Neste projeto, cada grupo deverá definir, no mínimo, **CINCO cenários para a aplicação** e cada cenário deve incluir:
+9.	Cronograma
+Etapa | Atividades | Duração
+Preparação | Seleção de usuários e cenários | 
+Execução | Aplicação dos testes | 
+Análise | Compilação e análise de dados | 
+Relatório final | Redação de achados e recomendações | 
 
-- Objetivo: O que será avaliado.
-- Contexto: A situação que leva o usuário a interagir com o sistema.
-- Tarefa: A ação que o usuário deve realizar.
-- Critério de sucesso: Como determinar se a tarefa foi concluída corretamente.
-
-**Exemplo: Cenário 1**
-
-**Objetivo:** Avaliar a facilidade e eficiência do usuário em pesquisar, adicionar um produto ao carrinho e finalizar a compra sem dificuldades.
-
-**Contexto:** O usuário deseja comprar um notebook para uso pessoal. Para isso, ele deverá entrar no site www.compras.com.br para buscar opções disponíveis, comparar preços, adicionar o produto ao carrinho e finalizar a compra com pagamento via cartão de crédito.
-
-**Tarefa(s):** 
-- Acessar o site e localizar a barra de pesquisa.
-- Pesquisar por "notebook" e utilizar os filtros para refinar a busca (exemplo: marca, preço, processador).
-- Escolher um dos notebooks listados e acessar a página do produto.
-- Adicionar o produto ao carrinho.
-- Finalizar a compra, preenchendo os dados de pagamento e endereço de entrega.
-- Confirmar a transação e verificar a tela de pedido concluído.
-
-**Critério(s) de Sucesso(s):**
-- O usuário consegue encontrar e filtrar os produtos sem dificuldades.
-- O produto é adicionado ao carrinho corretamente.
-- O usuário consegue preencher as informações de pagamento e entrega sem erros.
-- A compra é finalizada com sucesso, e o usuário visualiza a confirmação do pedido.
-- Todo o processo ocorre em menos de 5 minutos, sem necessidade de assistência.
-
-## Métodos de coleta de dados
-
-Os dados coletados devem ajudar a entender a experiência dos usuários e os dados podem ser coletados por observação direta incluindo métricas quantitativas (quantidade de cliques, número de erros, tempo gasto para cada tarefa etc.), métricas qualitativas (dificuldades, comentários etc.) e questionários pós-teste (A interface foi fácil de entender? Você encontrou dificuldades em alguma etapa? O que poderia ser melhorado?)
-
-Para cada voluntário do teste, é fundamental coletar e apresentar todos os dados/métricas previamente definidos, mas não se esqueça: atendendo à LGPD (Lei Geral de Proteção de Dados), nenhum dado sensível, que permita identificar o voluntário, deverá ser apresentado).
-
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
-
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+10.	Plano de Ação Pós-Teste
+-	Agrupar achados por heurística.
+-	Priorizar melhorias de maior impacto (ex: fluxo de agendamento).
+-	Propor ajustes de interface e acessibilidade.
+-	Retestar após implementação.
