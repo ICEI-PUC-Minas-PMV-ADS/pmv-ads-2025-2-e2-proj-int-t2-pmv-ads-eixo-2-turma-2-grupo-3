@@ -15,7 +15,6 @@ Definição de como o software é estruturado em termos dos componentes que faze
 ## Projeto da Base de Dados
 
 <img src=https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3/blob/docs/docs/img/Projeto%20da%20base%20de%20dados.png/>
- 
 
 ## ATENÇÃO!!!
 
