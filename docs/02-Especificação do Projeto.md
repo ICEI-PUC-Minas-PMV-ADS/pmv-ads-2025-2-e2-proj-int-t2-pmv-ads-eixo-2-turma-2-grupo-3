@@ -264,10 +264,11 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
 
 Paciente
-<img width="975" height="533" alt="Diagrama casos de uso" src="https://github.com/user-attachments/assets/9876bfd6-6fb2-462e-b168-ddd4be241f99" />
+![casos de uso paciente](https://github.com/user-attachments/assets/5f39e76a-88dc-402c-9853-3c8edba3e002)
 
 Médico
-![Diagrama casos de uso (4)](https://github.com/user-attachments/assets/74cf18bc-e516-4c7f-98d2-9f5db12b4fb6)
+![Casos de uso médico](https://github.com/user-attachments/assets/3cfcda56-f82d-4499-88ad-eddf98fa712e)
 
 Consultório
-![Diagrama casos de uso (5)](https://github.com/user-attachments/assets/e3e26ca4-cf7c-49f4-9c8d-d27646df0370)
+![Casos de uso consultório](https://github.com/user-attachments/assets/872bf90d-288c-4e1c-9118-f6773a16a38c)
+
