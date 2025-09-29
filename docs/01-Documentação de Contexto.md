@@ -1,43 +1,40 @@
-# Introdução
+# Contexto
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+O acesso à saúde é um direito fundamental garantido pela Constituição Federal, mas ainda enfrenta grandes desafios no Brasil, especialmente entre famílias em situação de vulnerabilidade social e financeira. Apesar do grande apoio do Sistema Único de Saúde (SUS), milhões de brasileiros ainda convivem com longas filas de espera, falta de recursos e até de didática que dificultam a marcação de consultas médicas. Diante desse cenário, é essencial buscar soluções tecnológicas que ampliem o acesso, aproximem pacientes de profissionais e promovam inclusão social por meios mais acessíveis.  
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
+A dificuldade de acesso a saúde de excelência faz parte da realidade de 25% da população (50,9 milhões de pessoas) que utilizam o SUS. Tanto as pessoas que sofrem com as longas esperas ou que dependem de meios não regulamentados, se veem na dificuldade para marcar consultas médicas e com as más condições oferecidas por essas alternativas.  
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+  Os problemas que a solução pretende solucionar são: dificuldade em 
+agendar, remarcar ou cancelar consultas de forma simples e acessível.
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+* Longas filas de espera que atrasam tratamentos e cuidados preventivos; 
+* Dependência de alternativas não regulamentadas, com risco à saúde da 
+população;
+* Continuação das desigualdades sociais devido à falta de acesso digno e eficiente 
+aos serviços médicos;
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+### Objetivo Geral: 
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Desenvolver uma aplicação de agendamento de consultas médicas que conecte pessoas em situação de vulnerabilidade econômica a médicos dispostos a oferecer atendimentos a baixo custo, promovendo acesso inclusivo à saúde e contribuindo para a redução das desigualdades sociais. 
+
+### Objetivos Específicos:  
+
+* Facilitar a busca e o agendamento de consultas médicas por meio de uma plataforma digital simples e acessível; 
+* Oferecer uma interface intuitiva que atenda às necessidades de usuários com diferentes níveis de familiaridade tecnológica; 
+* Promover a inclusão social, reduzindo barreiras econômicas no acesso a serviços de saúde; 
+* Engajar profissionais da área médica em ações de responsabilidade social, incentivando atendimentos de baixo custo; 
+* Contribuir para o cumprimento dos Objetivos de Desenvolvimento Sustentável da ONU, especialmente o ODS nº 3 (Saúde e Bem-Estar) e o ODS nº 10 (Redução das Desigualdades); 
 
 ## Justificativa
 
-Explique de forma clara a relevância da aplicação escolhida, justificando os objetivos específicos e os aspectos do software que serão aprofundados, e quantifique o impacto do problema com dados concretos (números, percentuais, indicadores) obtidos por bases oficiais ou outras fontes confiáveis, sempre citadas no padrão ABNT (no formato [Numérico] ou (AUTOR, ANO)).
-
-**Relacione o problema aos Objetivos de Desenvolvimento Sustentável (ODS), indicando quais ODS e subobjetivos são atendidos e descrevendo como o projeto contribui para cada um deles, garantindo coerência entre o impacto mensurado e as metas selecionadas.**
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+O que impulsionou a realização deste trabalho foi compreender que grande parte da população tem acesso restrito à saúde de qualidade. Isso ocorre, em parte, devido aos elevados preços das consultas para o paciente; além disso, o serviço público tende a ser moroso e até ineficiente. Nesse sentido, o projeto propõe o desenvolvimento de uma aplicação de software de agendamento que conecte pacientes de baixa renda a médicos dispostos a oferecer consultas a preços acessíveis, simplificando o processo de marcação e ampliando o acesso ao atendimento. O sistema destina-se a pessoas que necessitam de consultas médicas a baixo custo e a profissionais da saúde que desejam atender esse público de forma prática e organizada. A proposta fundamenta-se em estudos sobre inclusão digital, acessibilidade a serviços essenciais e nos princípios de análise e desenvolvimento de sistemas, que são a base para validar e sustentar as ideias apresentadas, alinhando-se ainda ao Objetivo de Desenvolvimento Sustentável nº 3 da ONU (Saúde e Bem-Estar) e ao ODS nº 10 (Redução das Desigualdades), os quais reforçam a necessidade de soluções inovadoras para ampliar o acesso à saúde de forma justa e inclusiva. 
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
+O projeto Cuida+ visa atingir os seguintes alvos: 
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+* Famílias e indivíduos em situação de vulnerabilidade financeira e baixa renda, que possuem cadastro no CAD Único e que necessitam ter o acesso à saúde de qualidade de forma facilitada; 
+* Consultórios médicos e profissionais da saúde que se dispõem a realizar o trabalho de formas menos burocráticas, que facilite a vida do cidadão de baixa renda e a um preço mais acessível à população carente; 

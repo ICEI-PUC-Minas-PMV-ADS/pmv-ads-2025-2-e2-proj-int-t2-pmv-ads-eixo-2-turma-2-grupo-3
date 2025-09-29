@@ -1,31 +1,95 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
+**1. Objetivo**
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
+Validar se o sistema Cuida+ atende aos requisitos funcionais e não funcionais definidos, garantindo que o processo de cadastro de usuários, login, marcação de consultas, remarcação, cancelamento e a interface baseada no Figma funcionem corretamente, de forma segura e intuitiva.
 
-Não deixe de enumerar os casos de teste de forma sequencial e de garantir que o(s) requisito(s) associado(s) a cada um deles está(ão) correto(s) - de acordo com o que foi definido na seção "2 - Especificação do Projeto". 
+**2. Escopo**
 
-Por exemplo:
- 
+Os testes contemplarão:
+- Cadastro de usuários (paciente e instituição de saúde)
+- Login 
+- Agendamento de consultas
+- Cancelamento e reagendamento
+
+Fora do escopo: integração com sistemas externos de saúde que ainda não estiverem homologados.
+
+
+**3. Estratégia de Testes**
+
+• Testes Funcionais → validação de requisitos e regras de negócio
+
+• Testes de Validação de Dados → campos obrigatórios, formatos de CPF, e-mail etc.
+
+• Testes de Segurança → login, autenticação e proteção de dados sensíveis
+
+• Testes de Performance → resposta rápida (< 2s em operações principais)
+
+• Testes de Compatibilidade → diferentes navegadores e dispositivo.
+
+
+**4. Casos de Teste**
+
+**Cadastro de Usuário**
+
 | **Caso de Teste** 	| **CT01 – Cadastrar perfil** 	|
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-00X - A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que esses consigam criar e gerenciar seu perfil. |
+|	Requisito Associado 	| RF-01 – A aplicação deve permitir o cadastro de pacientes. |
 | Objetivo do Teste 	| Verificar se o usuário consegue se cadastrar na aplicação. |
-| Passos 	| - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html<br> - Clicar em "Criar conta" <br> - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Aceitar os termos de uso <br> - Clicar em "Registrar" |
+| Passos 	| - Acessar o navegador <br> - Informar endereço do sistema - Clicar em "Criar conta" - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Confirmar senha - Clicar em “Cadastrar” |
 |Critério de Êxito | - O cadastro foi realizado com sucesso. |
 |  	|  	|
 | Caso de Teste 	| CT02 – Efetuar login	|
-|Requisito Associado | RF-00Y	- A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail. |
-| Objetivo do Teste 	| Verificar se o usuário consegue realizar login. |
-| Passos 	| - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" |
-|Critério de Êxito | - O login foi realizado com sucesso. |
+|Requisito Associado | RF-02 – A aplicação deve permitir o cadastro de instituições de saúde. |
+| Objetivo do Teste 	| Verificar se a instituição consegue se cadastrar na aplicação. |
+| Passos 	| - Acessar o navegador <br> - Informar endereço do sistema - Selecionar tipo “Instituição” - Preencher CNPJ, razão social, e-mail e senha - Clicar em “Cadastrar” |
+|Critério de Êxito | - Cadastro da instituição concluído com sucesso. |
+|  	|  	|
+| Caso de Teste 	| CT03 – Campos obrigatórios vazios no cadastro |
+|Requisito Associado | RF-01/02 – O cadastro deve validar obrigatoriedade dos campos. |
+| Objetivo do Teste 	| Verificar se o sistema exibe mensagem de erro ao tentar cadastrar sem preencher campos obrigatórios. |
+| Passos 	| - Acessar o navegador <br> - Informar endereço do sistema - Selecionar tipo “Instituição” - Clicar em “Cadastrar” sem preencher nada |
+|Critério de Êxito | Sistema exibe mensagem de erro nos campos obrigatórios. |
+|  	|  	|
+| Caso de Teste 	| CT04 – Login válido	|
+|Requisito Associado | RF-01/02 – O cadastro deve validar obrigatoriedade dos campos. |
+| Objetivo do Teste 	| Verificar se o usuário consegue realizar login com credenciais válidas. |
+| Passos 	| - Acessar o navegador <br> - Informar endereço do sistema - Selecionar tipo “Instituição” - Inserir e-mail e senha corretos - Clicar em “Entrar” |
+|Critério de Êxito | Login realizado e usuário redirecionado à tela inicial. |
+|  	|  	|
+| Caso de Teste 	| CT05 – Login inválido (senha errada)	|
+|Requisito Associado | RF-03 – A aplicação deve validar credenciais de login. |
+| Objetivo do Teste 	| Verificar se o sistema exibe mensagem de erro ao inserir senha incorreta. |
+| Passos 	| - Acessar o navegador <br> - Informar endereço do sistema - Inserir e-mail válido e senha incorretaInserir e-mail válido e senha incorreta - Clicar em “Entrar” |
+|Critério de Êxito | Mensagem exibida: “Usuário ou senha inválidos”. | 
+|  	|  	|
+| Caso de Teste 	| CT06 – Agendamento de consulta válido	|
+|Requisito Associado | RF-04 – O paciente deve poder agendar consultas. |
+| Objetivo do Teste 	| Verificar se o paciente consegue realizar agendamento de consulta. |
+| Passos 	| Paciente logado - Acessar tela “Agendar consulta” - Selecionar especialidade - Escolher data, horário e médico - Confirmar agendamento |
+|Critério de Êxito | Consulta registrada e exibida em “Minhas Consultas”.| 
+|  	|  	|
+| Caso de Teste 	| CT7 – Cancelar consulta futura	|
+|Requisito Associado | RF-05 – O paciente deve poder cancelar consultas agendadas. |
+| Objetivo do Teste 	| Verificar se o usuário consegue cancelar uma consulta já agendada. |
+| Passos 	| Acessar “Minhas Consultas” - Selecionar consulta - Clicar em “Cancelar” |
+|Critério de Êxito | Status da consulta atualizado para “Cancelada”.| 
+|  	|  	|
+| Caso de Teste 	| CT11 – Reagendar consulta	|
+|Requisito Associado | RF-06 – O paciente deve poder reagendar consultas. |
+| Objetivo do Teste 	| Verificar se o usuário consegue reagendar uma consulta já marcada. |
+| Passos 	| Acessar “Minhas Consultas” - Selecionar consulta - Clicar em “Reagendar” - Escolher novo horário/dia válido |
+|Critério de Êxito | Consulta reagendada com sucesso.|
+|  	|  	|
+| Caso de Teste 	| CT12 – Consistência visual	|
+|Requisito Associado | RNF-01 – A interface deve seguir um sistema limpo e claro. |
+| Objetivo do Teste 	| Verificar se a interface do sistema é clara. |
+| Passos 	| Executar sistema - Navegação limpa do projeto. |
+|Critério de Êxito | Layout consistente.|
+|  	|  	|
+| Caso de Teste 	| CT13 – Navegação entre telas	|
+|Requisito Associado |RNF-02 – O sistema deve permitir navegação fluida entre telas. |
+| Objetivo do Teste 	| Verificar se a navegação entre menus funciona corretamente. |
+| Passos 	| Usuário logado - Clicar nos menus (Home, Consultas, Perfil). |
+|Critério de Êxito | Navegação fluida e sem erros.|
 
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
