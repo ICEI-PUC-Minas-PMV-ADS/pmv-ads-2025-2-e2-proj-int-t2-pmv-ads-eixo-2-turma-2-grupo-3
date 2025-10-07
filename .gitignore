@@ -1,0 +1,29 @@
+# Build e binários
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.log
+
+# Configurações locais
+.vs/
+*.user
+*.suo
+*.cache
+
+# Dependências
+packages/
+node_modules/
+
+# Publicações temporárias
+wwwroot/lib/
+wwwroot/dist/
+
+# Arquivos do sistema
+Thumbs.db
+*.DS_Store
+
+# Configuração do Rider/VSCode
+.idea/
+.vscode/
