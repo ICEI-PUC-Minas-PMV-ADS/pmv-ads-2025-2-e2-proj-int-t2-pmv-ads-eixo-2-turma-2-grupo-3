@@ -1,0 +1,251 @@
+﻿@{
+    ViewData["Title"] = "Registrar";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            height:100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 200px;
+            padding: 0 50px;
+            height: 100%;
+        }
+
+        .form-container {
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .form-container h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .extras {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(to right, #007bff, #0099ff);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .register a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 80vh;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        /* TABLET */
+        @@media (max-width: 992px) {
+            .container {
+                position: relative;
+                align-items: center;
+                padding: 20px 100px 0px 150px;
+                justify-content: start;
+            }
+
+            .image-container img {
+                max-width: 280px;
+                height: 100vh;
+            }
+
+            .form-container {
+                max-width: 400px;
+            }
+
+            .image-container {
+                position: absolute;
+                right: -100px;
+            }
+
+            input, select {
+                width: 100%;
+                margin-bottom: 15px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* MOBILE */
+        @@media (max-width: 768px) {
+            .container {
+                height: auto;
+                padding: 30px 20px;
+                justify-content: center;
+            }
+
+            .image-container {
+                display: none;
+            }
+
+            .form-container h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-container p {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>CRIAR CONTA</h1>
+            <p>Selecione o tipo de cadastro e preencha seus dados</p>
+
+            <label for="tipoRegistro"><strong>Registrar como:</strong></label>
+            <select id="tipoRegistro" name="tipoRegistro" onchange="mostrarCampos()">
+                <option value="paciente">Paciente</option>
+                <option value="medico">Médico</option>
+                <option value="clinica">Clínica</option>
+            </select>
+
+            <form method="post" asp-action="Register">
+                <div id="camposComuns">
+                    <label>Nome</label>
+                    <input type="text" name="Nome" placeholder="Digite seu nome" required />
+
+                    <label>Email</label>
+                    <input type="email" name="Email" placeholder="Digite seu email" required />
+
+                    <label>Senha</label>
+                    <input type="password" name="Senha" placeholder="**********" required />
+
+                    <label>Confirmar senha</label>
+                    <input type="password" name="confirmarSenha" placeholder="**********" required />
+                </div>
+
+                <div id="camposPaciente">
+                    <label>Data de nascimento</label>
+                    <input type="date" name="birthDate" required />
+                </div>
+
+                <div id="camposMedico" style="display:none;">
+                    <label>CRM</label>
+                    <input type="text" name="crm" placeholder="Digite seu CRM" required />
+
+                    <label>Especialidade</label>
+                    <input type="text" name="especialidade" placeholder="Ex: Cardiologia" required />
+                </div>
+
+                <div id="camposClinica" style="display:none;">
+                    <label>Nome da clínica</label>
+                    <input type="text" name="nomeClinica" placeholder="Digite o nome da clínica" required />
+
+                    <label>CNPJ</label>
+                    <input type="text" name="cnpj" placeholder="00.000.000/0000-00" required />
+
+                    <label>Telefone</label>
+                    <input type="tel" name="telefone" placeholder="(00) 00000-0000" required />
+                </div>
+
+                <button type="submit">CRIAR CONTA</button>
+            </form>
+
+            <div class="register">
+                <p>Já tem uma conta? <a asp-controller="Login" asp-action="Index">Entrar</a></p>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="~/images/imageLogin.png" alt="Imagem médica" />
+        </div>
+    </div>
+
+    <script>
+        function mostrarCampos() {
+            const tipo = document.getElementById("tipoRegistro").value;
+            document.getElementById("camposPaciente").style.display = "none";
+            document.getElementById("camposMedico").style.display = "none";
+            document.getElementById("camposClinica").style.display = "none";
+
+            if (tipo === "paciente") {
+                document.getElementById("camposPaciente").style.display = "block";
+            } else if (tipo === "medico") {
+                document.getElementById("camposMedico").style.display = "block";
+            } else if (tipo === "clinica") {
+                document.getElementById("camposClinica").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
