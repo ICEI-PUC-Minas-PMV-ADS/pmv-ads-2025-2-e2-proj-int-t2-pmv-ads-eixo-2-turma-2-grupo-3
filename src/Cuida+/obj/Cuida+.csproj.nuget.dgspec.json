@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Softwares\\repos\\Cuida+\\Cuida+\\Cuida+.csproj": {}
+    "D:\\Softwares\\repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3\\src\\Cuida+\\Cuida+.csproj": {}
   },
   "projects": {
-    "D:\\Softwares\\repos\\Cuida+\\Cuida+\\Cuida+.csproj": {
+    "D:\\Softwares\\repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3\\src\\Cuida+\\Cuida+.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Softwares\\repos\\Cuida+\\Cuida+\\Cuida+.csproj",
+        "projectUniqueName": "D:\\Softwares\\repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3\\src\\Cuida+\\Cuida+.csproj",
         "projectName": "Cuida+",
-        "projectPath": "D:\\Softwares\\repos\\Cuida+\\Cuida+\\Cuida+.csproj",
-        "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "D:\\Softwares\\repos\\Cuida+\\Cuida+\\obj\\",
+        "projectPath": "D:\\Softwares\\repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3\\src\\Cuida+\\Cuida+.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "D:\\Softwares\\repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3\\src\\Cuida+\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -49,6 +49,30 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[8.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.20, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

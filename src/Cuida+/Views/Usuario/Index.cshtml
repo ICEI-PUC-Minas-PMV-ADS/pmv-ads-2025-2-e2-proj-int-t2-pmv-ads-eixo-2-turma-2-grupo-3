@@ -1,0 +1,160 @@
+﻿@model Cuida_.Models.usuarios.Usuario
+
+@{
+    ViewData["Title"] = "Criar Conta";
+    Layout = null;
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <style>
+        * { box-sizing: border-box; }
+        html { height:100%; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; margin: 0; padding: 0; height: 100%; }
+        .container { display: flex; justify-content: center; align-items: center; gap: 200px; padding: 0 50px; height: 100%; }
+        .form-container { max-width: 350px; width: 100%; }
+        .form-container h1 { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+        .form-container p { color: #666; margin-bottom: 20px; }
+        form label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .extras { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; margin-bottom: 15px; }
+        button { width: 100%; background: linear-gradient(to right, #007bff, #0099ff); color: #fff; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button:hover { opacity: 0.9; }
+        .register { text-align: center; margin-top: 15px; font-size: 0.9rem; }
+        .register a { color: #007bff; text-decoration: none; font-weight: 500; }
+        .image-container img { width: 100%; height: 80vh; border-radius: 20px; object-fit: cover; }
+        @@media (max-width: 992px) {
+            .container { position: relative; align-items: center; padding: 20px 100px 0px 150px; justify-content: start; }
+            .image-container img { max-width: 280px; height: 100vh; }
+            .form-container { max-width: 400px; }
+            .image-container { position: absolute; right: -100px; }
+            input, select { width: 100%; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; }
+        }
+        @@media (max-width: 768px) {
+            .container { height: auto; padding: 30px 20px; justify-content: center; }
+            .image-container { display: none; }
+            .form-container h1 { font-size: 1.8rem; }
+            .form-container p { font-size: 0.9rem; }
+            button { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>CRIAR CONTA</h1>
+            <p>Selecione o tipo de cadastro e preencha seus dados</p>
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <label for="tipoRegistro"><strong>Registrar como:</strong></label>
+                <select id="tipoRegistro" name="TipoRegistro" onchange="mostrarCampos()" class="form-control">
+                    <option value="paciente">Paciente</option>
+                    <option value="medico">Médico</option>
+                    <option value="clinica">Clínica</option>
+                </select>
+
+                <div id="camposComuns">
+                    <label asp-for="Nome"></label>
+                    <input asp-for="Nome" class="form-control" placeholder="Digite seu nome" required />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Digite seu email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <label asp-for="Senha"></label>
+                    <input asp-for="Senha" type="password" class="form-control" placeholder="**********" required />
+                    <span asp-validation-for="Senha" class="text-danger"></span>
+
+                    <label for="ConfirmarSenha">Confirmar senha</label>
+                    <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control" placeholder="**********" required />
+                </div>
+
+                <div id="camposMedico" style="display:none;">
+                    <label for="CRM">CRM</label>
+                    <input type="text" id="CRM" name="CRM" class="form-control" placeholder="Digite seu CRM" />
+
+                    <label for="Especialidade">Especialidade</label>
+                    <input type="text" id="Especialidade" name="Especialidade" class="form-control" placeholder="Ex: Cardiologia" />
+                </div>
+
+                <div id="camposClinica" style="display:none;">
+                    <label for="NomeClinica">Nome da clínica</label>
+                    <input type="text" id="NomeClinica" name="NomeClinica" class="form-control" placeholder="Digite o nome da clínica" />
+
+                    <label for="CNPJ">CNPJ</label>
+                    <input type="text" id="CNPJ" name="CNPJ" class="form-control" placeholder="00.000.000/0000-00" />
+
+                    <label for="Telefone">Telefone</label>
+                    <input type="tel" id="Telefone" name="Telefone" class="form-control" placeholder="(00) 00000-0000" />
+                </div>
+
+                <button type="submit">CRIAR CONTA</button>
+            </form>
+
+            <div class="register">
+                <p>Já tem uma conta? <a asp-controller="Login" asp-action="Index">Entrar</a></p>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="~/images/imageLogin.png" alt="Imagem médica" />
+        </div>
+    </div>
+
+    @* MODAL DE SUCESSO *@
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center py-5">
+                        <span class="fs-4">@successMessage</span>
+                    </div>
+                    <div class="modal-footer justify-content-center border-0">
+                        <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modalEl = document.getElementById('successModal');
+            if (modalEl) {
+                var modal = new bootstrap.Modal(modalEl);
+                modal.show();
+            }
+        });
+    </script>
+    <script>
+        function mostrarCampos() {
+            const tipo = document.getElementById("tipoRegistro").value;
+            document.getElementById("camposPaciente").style.display = "none";
+            document.getElementById("camposMedico").style.display = "none";
+            document.getElementById("camposClinica").style.display = "none";
+
+            if (tipo === "paciente") {
+                document.getElementById("camposPaciente").style.display = "block";
+            } else if (tipo === "medico") {
+                document.getElementById("camposMedico").style.display = "block";
+            } else if (tipo === "clinica") {
+                document.getElementById("camposClinica").style.display = "block";
+            }
+        }
+    </script>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>
