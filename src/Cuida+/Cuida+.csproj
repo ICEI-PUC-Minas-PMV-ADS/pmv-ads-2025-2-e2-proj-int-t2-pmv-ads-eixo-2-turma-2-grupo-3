@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\campanha\**" />
+    <Content Remove="Models\campanha\**" />
+    <EmbeddedResource Remove="Models\campanha\**" />
+    <None Remove="Models\campanha\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
