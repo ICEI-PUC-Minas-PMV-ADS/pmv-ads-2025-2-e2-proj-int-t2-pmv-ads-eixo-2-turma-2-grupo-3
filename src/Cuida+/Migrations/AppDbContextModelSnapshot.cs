@@ -67,7 +67,7 @@ namespace Cuida_.Migrations
                 {
                     b.HasBaseType("Cuida_.Models.usuarios.Usuario");
 
-                    b.Property<string>("Crm")
+                    b.Property<string>("CRM")
                         .IsRequired()
                         .HasColumnType("longtext");
 
