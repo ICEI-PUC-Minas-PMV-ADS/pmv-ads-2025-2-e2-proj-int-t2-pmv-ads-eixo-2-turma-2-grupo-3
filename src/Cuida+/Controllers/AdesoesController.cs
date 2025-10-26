@@ -15,7 +15,6 @@ namespace Cuida_.Controllers
 
         public async Task<IActionResult> Index()
         {
-            
             var dados = await _context.AderirCampanhas.ToListAsync();
             return View(dados);
         }
