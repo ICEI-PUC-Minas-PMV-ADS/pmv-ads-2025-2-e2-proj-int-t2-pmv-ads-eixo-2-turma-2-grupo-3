@@ -4,6 +4,7 @@ using Cuida_.Models.repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cuida_.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251020192734_CriarTabelaCampanha")]
+    partial class CriarTabelaCampanha
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +106,7 @@ namespace Cuida_.Migrations
                 {
                     b.HasBaseType("Cuida_.Models.usuarios.Usuario");
 
-                    b.Property<string>("CRM")
+                    b.Property<string>("Crm")
                         .IsRequired()
                         .HasColumnType("longtext");
 

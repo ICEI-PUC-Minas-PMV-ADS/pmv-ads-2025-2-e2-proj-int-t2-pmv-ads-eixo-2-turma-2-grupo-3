@@ -1,0 +1,53 @@
+﻿@model Cuida_.Models.campanhas.Campanha
+
+@{
+    ViewData["Title"] = "Detalhes da Campanha";
+}
+
+<h1>DETALHES DA CAMPANHA</h1>
+
+<div>
+    <h4>Campanha</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeCampanha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeCampanha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataFim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ativa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ativa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Clinica)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Clinica.Email)
+        </dd>
+    </dl>
+</div>
+<div class="form-group">
+     <a asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>
