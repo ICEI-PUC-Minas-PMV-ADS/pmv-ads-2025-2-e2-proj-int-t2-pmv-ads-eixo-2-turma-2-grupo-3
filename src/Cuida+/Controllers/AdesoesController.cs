@@ -1,23 +1,21 @@
-﻿using System.Threading.Tasks;                  // para Task e async/await
-using Microsoft.AspNetCore.Mvc;               // para Controller e IActionResult
-using Microsoft.EntityFrameworkCore;          // para ToListAsync e DbContext
-using Cuida_.Data;                            // onde está o seu DbContext (ajuste o namespace)
-using Cuida_.Models.CampanhasAderidas;        // onde está sua classe AderirCampanhas
-using MySqlConnector;
+﻿using Cuida_.Models.repository;
+using Cuida_.Models.CampanhasAderidas;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cuida_.Controllers
 {
-    public class AdesoesController : Controller
+    public class AderirCampanhasController : Controller
     {
-        private readonly cuidamais_db _context; // ou cuidamais_dbContext, se for o nome real
-
-        public AdesoesController(cuidamais_db context)
+        private readonly AppDbContext _context;
+        public AderirCampanhasController(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
+            
             var dados = await _context.AderirCampanhas.ToListAsync();
             return View(dados);
         }
