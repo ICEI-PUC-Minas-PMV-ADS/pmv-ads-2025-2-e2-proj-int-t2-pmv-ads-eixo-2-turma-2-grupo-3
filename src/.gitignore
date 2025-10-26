@@ -133,3 +133,10 @@ $RECYCLE.BIN/
 _NCrunch*
 
 .vs
+
+# Pastas de build
+bin/
+obj/
+
+# Configurações do Visual Studio
+.vs/
