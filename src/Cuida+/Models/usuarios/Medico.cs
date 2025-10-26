@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cuida_.Models.usuarios
@@ -11,5 +12,7 @@ namespace Cuida_.Models.usuarios
 
         [Required(ErrorMessage = "Especialidade obrigatória")]
         public string Especialidade { get; set; }
+
+        public List<string> HorariosDisponiveis { get; set; }
     }
 }
