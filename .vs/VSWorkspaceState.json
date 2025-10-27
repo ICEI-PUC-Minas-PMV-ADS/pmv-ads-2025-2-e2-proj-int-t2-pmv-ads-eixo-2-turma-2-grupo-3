@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Cuida+",
+    "\\src\\Cuida+\\Migrations"
   ],
-  "SelectedNode": "\\C:\\Users\\raale\\Desktop\\Workspace\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3",
+  "SelectedNode": "\\src\\Cuida+\\Migrations\\AppDbContextModelSnapshot.cs",
   "PreviewInSolutionExplorer": false
 }

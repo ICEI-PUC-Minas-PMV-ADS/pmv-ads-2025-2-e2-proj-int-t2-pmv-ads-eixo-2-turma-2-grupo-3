@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuida+")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af28c7de92f1da4175ac31c396a268d3211ae325")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2931adf36dd6d5a6b57832926fca7b6ca25d38b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuida+")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuida+")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

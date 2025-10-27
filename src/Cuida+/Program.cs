@@ -12,7 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(
     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     )
 );
-        
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
