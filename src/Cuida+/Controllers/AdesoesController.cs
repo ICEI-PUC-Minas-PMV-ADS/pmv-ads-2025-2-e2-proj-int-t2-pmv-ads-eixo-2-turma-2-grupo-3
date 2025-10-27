@@ -22,5 +22,10 @@ namespace Cuida_.Controllers
             var dados = await _context.AderirCampanhas.ToListAsync();
             return View(dados);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }   
     }
 }
