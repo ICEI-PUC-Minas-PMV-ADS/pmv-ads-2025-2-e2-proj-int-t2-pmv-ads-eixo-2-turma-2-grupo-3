@@ -1,0 +1,62 @@
+﻿@model Cuida_.Models.campanhas.Campanha
+@await Html.PartialAsync("_MenuPartial")
+
+@{
+    ViewData["Title"] = "Excluir campanha";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <div class="card-body text-center">
+                    <h2 class="text-danger fw-bold mb-3">Excluir campanha</h2>
+                    <p class="fs-5 mb-4">Tem certeza que deseja excluir esta campanha?</p>
+
+                    <div class="alert alert-warning text-start shadow-sm">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4 fw-semibold text-secondary">Nome:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.NomeCampanha)</dd>
+
+                            <dt class="col-sm-4 fw-semibold text-secondary">Descrição:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Descricao)</dd>
+
+                            <dt class="col-sm-4 fw-semibold text-secondary">Data início:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataInicio)</dd>
+
+                            <dt class="col-sm-4 fw-semibold text-secondary">Data fim:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataFim)</dd>
+
+                            <dt class="col-sm-4 fw-semibold text-secondary">Status:</dt>
+                            <dd class="col-sm-8">
+                                @(Model.Ativa ? 
+                                    "<span class='badge bg-success'>Ativa</span>" : 
+                                    "<span class='badge bg-secondary'>Inativa</span>")
+                            </dd>
+
+                            <dt class="col-sm-4 fw-semibold text-secondary">Clínica:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Clinica.Email)</dd>
+                        </dl>
+                    </div>
+
+                    <form asp-action="Delete" method="post" class="mt-4">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2 fw-semibold">
+                                Cancelar
+                            </a>
+                            <input type="submit" value="Excluir" class="btn btn-danger px-4 py-2 fw-semibold" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

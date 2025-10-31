@@ -1,11 +1,12 @@
 ﻿@model Cuida_.Models.campanhas.Campanha
+@await Html.PartialAsync("_MenuPartial")
 
 @{
-    ViewData["Title"] = "Excluir";
+    ViewData["Title"] = "Detalhes da Campanha";
 }
 
-<h1>EXCLUIR CAMPANHA</h1>
-<p>Tem certeza que deseja excluir essa campanha ?</p>
+<h1>DETALHES DA CAMPANHA</h1>
+
 <div>
     <h4>Campanha</h4>
     <hr />
@@ -47,10 +48,7 @@
             @Html.DisplayFor(model => model.Clinica.Email)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <a asp-action="Index" class="btn btn-primary">Voltar</a> |
-        <input type="submit" value="Delete" class="btn btn-danger" />
-    </form>
+</div>
+<div class="form-group">
+     <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>

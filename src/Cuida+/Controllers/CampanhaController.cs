@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cuida_.Controllers
 {
-    public class CampanhasController : Controller
+    public class CampanhaController : Controller
     {
         private readonly AppDbContext _context;
 
-        public CampanhasController(AppDbContext context)
+        public CampanhaController(AppDbContext context)
         {
             _context = context;
         }
