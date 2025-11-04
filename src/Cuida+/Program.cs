@@ -15,6 +15,13 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(
 
 var app = builder.Build();
 
+/* Adicionei a crição automatica do banco quando não existe para facilitar */
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
