@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-                    
-        
-        
-    
+
+
+
+
 namespace Cuida_.Controllers
 {
     public class AderirCampanhasController : Controller
@@ -26,6 +26,6 @@ namespace Cuida_.Controllers
         public IActionResult Create()
         {
             return View();
-        }   
+        }
     }
 }
