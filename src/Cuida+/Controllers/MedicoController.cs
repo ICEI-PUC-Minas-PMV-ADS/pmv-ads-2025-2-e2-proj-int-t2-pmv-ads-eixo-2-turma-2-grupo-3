@@ -2,6 +2,8 @@
 using Cuida_.Models.usuarios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Cuida_.Models.campanhas;
+using System.Linq;
 
 namespace Cuida_.Controllers
 {
@@ -93,5 +95,27 @@ namespace Cuida_.Controllers
             TempData["SuccessMessage"] = "Médico excluído com sucesso!";
             return RedirectToAction("Index");
         }
+    
+    [HttpGet("Medico/CampanhasDisponiveis")]
+        public async Task<IActionResult> CampanhasDisponiveis()
+        {
+            var campanhas = await _context.Campanhas
+               .Select(c => new CampanhaDisponivelVM
+               {
+                   Id = c.Id,
+                   NomeCampanha = c.NomeCampanha,
+                   DataInicio = c.DataInicio,
+                   DataFim = c.DataFim,
+                   Ativa = c.Ativa,
+                   
+               })
+                 .ToListAsync();
+
+            
+            return View("CampanhasDisponiveis", campanhas);
+        }
     }
+
+
+
 }
