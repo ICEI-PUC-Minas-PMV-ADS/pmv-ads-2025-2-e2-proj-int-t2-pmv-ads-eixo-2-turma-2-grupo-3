@@ -69,7 +69,7 @@ namespace Cuida_.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NomeClinica")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -98,9 +98,6 @@ namespace Cuida_.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("CampanhaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Especialidade")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -116,8 +113,6 @@ namespace Cuida_.Migrations
 
                     b.HasIndex("CRM")
                         .IsUnique();
-
-                    b.HasIndex("CampanhaId");
 
                     b.HasIndex("UsuarioId");
 
@@ -207,10 +202,6 @@ namespace Cuida_.Migrations
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Medico", b =>
                 {
-                    b.HasOne("Cuida_.Models.Campanha", null)
-                        .WithMany("Medicos")
-                        .HasForeignKey("CampanhaId");
-
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
@@ -229,11 +220,6 @@ namespace Cuida_.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Campanha", b =>
-                {
-                    b.Navigation("Medicos");
                 });
 #pragma warning restore 612, 618
         }

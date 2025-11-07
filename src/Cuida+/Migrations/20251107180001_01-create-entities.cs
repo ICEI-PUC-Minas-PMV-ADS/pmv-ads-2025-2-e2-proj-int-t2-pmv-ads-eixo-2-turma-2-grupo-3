@@ -40,7 +40,7 @@ namespace Cuida_.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                    NomeClinica = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CNPJ = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -51,6 +51,32 @@ namespace Cuida_.Migrations
                     table.PrimaryKey("PK_Clinicas", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Clinicas_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Medicos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CRM = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Especialidade = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Medicos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Medicos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
@@ -110,38 +136,6 @@ namespace Cuida_.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "Medicos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CRM = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Especialidade = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    CampanhaId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Medicos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Medicos_Campanhas_CampanhaId",
-                        column: x => x.CampanhaId,
-                        principalTable: "Campanhas",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Medicos_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Campanhas_ClinicaId",
                 table: "Campanhas",
@@ -157,11 +151,6 @@ namespace Cuida_.Migrations
                 name: "IX_Clinicas_UsuarioId",
                 table: "Clinicas",
                 column: "UsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Medicos_CampanhaId",
-                table: "Medicos",
-                column: "CampanhaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Medicos_CRM",
@@ -196,13 +185,13 @@ namespace Cuida_.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Campanhas");
+
+            migrationBuilder.DropTable(
                 name: "Medicos");
 
             migrationBuilder.DropTable(
                 name: "Pacientes");
-
-            migrationBuilder.DropTable(
-                name: "Campanhas");
 
             migrationBuilder.DropTable(
                 name: "Clinicas");

@@ -13,7 +13,7 @@ namespace Cuida_.Models.Usuarios
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Nome Fantasia obrigatório")]
-        public string Nome { get; set; }
+        public string NomeClinica { get; set; }
 
         [Required(ErrorMessage = "CNPJ obrigatório")]
         public string CNPJ { get; set; }
