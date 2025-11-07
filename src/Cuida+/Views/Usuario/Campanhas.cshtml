@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Cuida_.Models.campanhas.Campanha>
+﻿@using Cuida_.Models
+@model IEnumerable<Campanha>
 
 @{
     ViewData["Title"] = "Campanhas Disponíveis";
@@ -136,7 +137,6 @@
                                 <p><strong>Especialidade:</strong> @campanha.Descricao</p>
                                 <p><strong>Início:</strong> @campanha.DataInicio.ToShortDateString()</p>
                                 <p><strong>Fim:</strong> @campanha.DataFim.ToShortDateString()</p>
-                                <p><strong>Clínica:</strong> @campanha.Clinica?.NomeFantasia</p>
 
                                 <div class="divider"></div>
                                 <div class="text-end">
