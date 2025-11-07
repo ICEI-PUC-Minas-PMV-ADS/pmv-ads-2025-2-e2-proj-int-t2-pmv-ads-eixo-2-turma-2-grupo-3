@@ -1,4 +1,4 @@
-﻿using Cuida_.Models.Usuario.Dto;
+﻿using Cuida_.Models.Usuarios.Dto;
 using Cuida_.Models.Usuarios;
 using Cuida_.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -77,7 +77,7 @@ namespace Cuida_.Controllers
                 default:
                     var clinica = new Clinica
                     {
-                        Nome = cadastroDTO.NomeClinica,
+                        NomeClinica = cadastroDTO.NomeClinica,
                         CNPJ = cadastroDTO.CNPJ,
                         UsuarioId = usuario.Id
                     };
