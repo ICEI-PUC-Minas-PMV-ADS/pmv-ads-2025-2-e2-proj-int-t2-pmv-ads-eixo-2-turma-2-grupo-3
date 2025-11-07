@@ -1,16 +1,16 @@
-﻿using Cuida_.Models.repository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Cuida_.Models.campanhas;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Cuida_.Repository;
+using Cuida_.Models;
 
 namespace Cuida_.Controllers
 {
-    public class CampanhasController : Controller
+    public class CampanhaController : Controller
     {
         private readonly AppDbContext _context;
 
-        public CampanhasController(AppDbContext context)
+        public CampanhaController(AppDbContext context)
         {
             _context = context;
         }

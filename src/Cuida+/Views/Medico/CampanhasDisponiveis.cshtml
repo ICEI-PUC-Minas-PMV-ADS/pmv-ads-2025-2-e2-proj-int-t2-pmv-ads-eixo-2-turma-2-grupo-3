@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Cuida_.Models.campanhas.CampanhaDisponivelVM>
+﻿@using Cuida_.Models
+
+@model IEnumerable<Campanha>
 
 @{
     ViewData["Title"] = "Minhas próximas consultas";
@@ -98,7 +100,7 @@
 
             <!-- ===== Cards de campanhas ===== -->
             <section class="cards">
-                @foreach (var c in Model ?? Enumerable.Empty<Cuida_.Models.campanhas.CampanhaDisponivelVM>())
+                @foreach (var c in Model ?? Enumerable.Empty<Cuida_.Models.Campanha>())
                 {
                     <article class="card">
                         <h2>@((c.NomeCampanha ?? "Campanha de Vacinação").ToUpper())</h2>

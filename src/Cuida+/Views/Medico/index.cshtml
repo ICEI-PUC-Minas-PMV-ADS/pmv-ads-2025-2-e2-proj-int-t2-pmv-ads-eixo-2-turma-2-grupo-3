@@ -1,4 +1,4 @@
-@model IEnumerable<Cuida_.Models.usuarios.Medico>
+@model IEnumerable<Cuida_.Models.Usuarios.Medico>
 
     @{
     ViewData["Title"] = "Cadastrar médico";
@@ -141,8 +141,6 @@
                                     data-bs-target="#modalEditar"
                                     data-id="@medico.Id"
                                     data-nome="@medico.Nome"
-                                    data-email="@medico.Email"
-                                    data-senha="@medico.Senha"
                                     data-crm="@medico.CRM"
                                     data-especialidade="@medico.Especialidade">
                                 <i class="bi bi-pencil"></i>

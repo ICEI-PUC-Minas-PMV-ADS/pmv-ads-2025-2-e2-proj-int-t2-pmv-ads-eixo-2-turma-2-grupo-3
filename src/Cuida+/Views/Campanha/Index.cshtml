@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Cuida_.Models.campanhas.Campanha>
+﻿@using Cuida_.Models.Usuarios
+@using Cuida_.Models
+@model IEnumerable<Campanha>
 
 @{
     ViewData["Title"] = "Campanhas";
@@ -49,9 +51,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ativa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clinica.Email)
             </td>
             <td>
                 <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |

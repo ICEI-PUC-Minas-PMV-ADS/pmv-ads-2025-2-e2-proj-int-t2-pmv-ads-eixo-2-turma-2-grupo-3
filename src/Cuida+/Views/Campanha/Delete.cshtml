@@ -1,4 +1,6 @@
-﻿@model Cuida_.Models.campanhas.Campanha
+﻿@using Cuida_.Models.Usuarios
+@using Cuida_.Models
+@model Campanha
 
 @{
     ViewData["Title"] = "Excluir";
@@ -43,9 +45,6 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Clinica)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Clinica.Email)
-        </dd>
     </dl>
     
     <form asp-action="Delete">
