@@ -1,0 +1,57 @@
+﻿@using Cuida_.Models.Usuarios
+@model Campanha
+
+@{
+    ViewData["Title"] = "Criar campanha";
+}
+
+<h1>ADICIONAR NOVA CAMPANHA</h1>
+
+<h4>Campanha</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeCampanha" class="control-label"></label>
+                <input asp-for="NomeCampanha" class="form-control" />
+                <span asp-validation-for="NomeCampanha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFim" class="control-label"></label>
+                <input asp-for="DataFim" class="form-control" />
+                <span asp-validation-for="DataFim" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Ativa" /> @Html.DisplayNameFor(model => model.Ativa)
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Clínica</label>
+                <select asp-for="ClinicaId" class="form-control" asp-items="ViewBag.Clinicas">
+                     <option value="">-- Selecione uma clínica --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
