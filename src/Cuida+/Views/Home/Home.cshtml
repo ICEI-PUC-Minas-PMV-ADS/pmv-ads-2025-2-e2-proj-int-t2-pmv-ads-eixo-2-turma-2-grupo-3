@@ -1,0 +1,361 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        main {
+            padding: 30px 5% 0 5%;
+            margin-left: 50px;
+        }
+
+        p {
+            color: #5b5b5b;
+        }
+
+        .imageHome {
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .stats {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0d99ff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            display: block;
+            position: relative;
+        }
+
+            .number::after {
+                content: '';
+                display: block;
+                width: 100px;
+                height: 2px;
+                background-color: #000;
+                margin: 6px auto 8px;
+            }
+
+        .label {
+            font-size: 1.1rem;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .info-campaigns {
+            display: flex;
+            gap: 30px;
+        }
+
+        .info-text {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-numbers {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-campanhas {
+            background: #0d99ff;
+            width: 250px;
+            height: 50px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+            .button-campanhas:hover {
+                transform: scale(1.05);
+            }
+
+        .info-solidariedade {
+            display: flex;
+        }
+
+        .info-container {
+            width: 50%;
+        }
+
+        .icone-container {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            i
+
+        {
+            color: #0d99ff;
+            font-size: 100px;
+        }
+
+        }
+
+        hr {
+            margin: 50px 0px;
+        }
+
+        .icon {
+            font-size: 32px;
+            color: #0d99ff;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(13,153,255,0.06);
+            overflow: hidden;
+        }
+
+        .thumb {
+            height: 160px;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+
+        .card-body {
+            padding: 14px;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .excerpt {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .read {
+            font-weight: 600;
+            color: #0d99ff;
+            text-decoration: none;
+        }
+
+        .attribution {
+            font-size: 11px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        @@media (max-width: 768px) {
+            main {
+                margin-left: 0;
+            }
+
+            .info-text,
+            .info-numbers {
+                width: 100%;
+                text-align: center;
+            }
+
+            .info-campaigns {
+                flex-direction: column
+            }
+
+            .info-container {
+                width: 100%;
+            }
+
+            .icone-container {
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            .info-text {
+                text-align: start;
+                margin-top: 20px;
+            }
+
+            .imageHome {
+                height: 200px;
+            }
+
+            .info-solidariedade {
+                flex-direction: column;
+            }
+
+            .grid {
+                margin-bottom: 100px;
+            }
+        }
+
+        @@media(min-width:720px) {
+            .grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    @await Html.PartialAsync("_MenuPartial")
+
+    <main>
+        <img class="imageHome" src="~/images/imageHome.png" alt="Campanhas Cuida+" />
+
+        <div class="info-campaigns">
+            <div class="info-text">
+                <h1 style="color: #0d99ff;">Campanhas que ajudam o Brasil inteiro! Acompanhe nossos números</h1>
+                <p>
+                    Conheça as campanhas que estão fazendo a diferença na vida de milhares de pessoas em todo o Brasil.
+                    Junte-se a nós nessa jornada de solidariedade e transformação social!
+                </p>
+                <a class="button-campanhas">Ver campanhas disponíveis</a>
+            </div>
+
+            <div class="info-numbers">
+                <div class="stats">
+                    <span class="number">+5200</span>
+                    <div class="label">Médicos Cooperados</div>
+                </div>
+
+                <div class="stats">
+                    <span class="number">+310</span>
+                    <div class="label">Hospitais, clínicas e laboratórios</div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-solidariedade">
+            <div class="info-container">
+                <h1 style="color: #0d99ff;">Cuidar de quem mais precisa</h1>
+                <p>
+                    Nossa missão é levar saúde de qualidade para todos. Através de campanhas gratuitas,
+                    conectamos médicos especialistas a comunidades de baixa renda, oferecendo atendimento humano,
+                    acessível e transformador. Cada campanha é uma oportunidade de cuidar, acolher e fazer a diferença
+                    na vida de quem mais precisa.
+                </p>
+            </div>
+            <div class="icone-container">
+                <h1>
+                    <i class="fas fa-hands-helping"></i>
+                </h1>
+            </div>
+        </div>
+
+        <hr />
+
+        <h1 style="color: #0d99ff; margin: 30px 0px;">Portal de notícias</h1>
+        <section class="grid" id="posts">
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">6 de novembro • Atendimento gratuito</div>
+                    <h2>Campanha leva especialistas para comunidades carentes</h2>
+                    <p class="excerpt">Médicos voluntários oferecem consultas de rotina e encaminhamentos gratuitos em parceria com a prefeitura.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Saúde Solidária</div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">4 de novembro • Prevenção</div>
+                    <h2>Mutirão realiza exames gratuitos de glicemia e pressão arterial</h2>
+                    <p class="excerpt">Ação busca incentivar o diagnóstico precoce de doenças cardiovasculares entre os moradores da região.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Vida em Foco</div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">2 de novembro • Imunização</div>
+                    <h2>Campanha de vacinação é ampliada para novos grupos</h2>
+                    <p class="excerpt">Com novas doses disponíveis, unidades de saúde passam a atender gestantes, idosos e crianças.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Portal Bem Cuidar</div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">29 de outubro • Educação</div>
+                    <h2>Projeto ensina hábitos saudáveis em escolas públicas</h2>
+                    <p class="excerpt">Alunos aprendem sobre alimentação balanceada e cuidados com a saúde de forma lúdica e divertida.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Saúde na Escola</div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">25 de outubro • Saúde bucal</div>
+                    <h2>Odontomóvel oferece atendimento gratuito a moradores</h2>
+                    <p class="excerpt">Unidade móvel percorre bairros oferecendo limpeza, restauração e orientação sobre higiene bucal.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Sorriso Solidário</div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <div class="meta">22 de outubro • Bem-estar</div>
+                    <h2>Grupo promove caminhadas e atividades físicas gratuitas</h2>
+                    <p class="excerpt">Iniciativa comunitária busca combater o sedentarismo e promover qualidade de vida com eventos semanais.</p>
+                    <a class="read" href="#">Ler mais →</a>
+                    <div class="attribution">Fonte: Movimento pela Vida</div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+</body>
+</html>
