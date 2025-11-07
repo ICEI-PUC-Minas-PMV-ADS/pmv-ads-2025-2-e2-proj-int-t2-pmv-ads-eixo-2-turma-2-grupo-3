@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Cuida_.Models.campanhas.CampanhaDisponivelVM>
+
+@{
+    ViewData["Title"] = "Minhas próximas consultas";
+    var medicoId = ViewBag.MedicoId as int? ?? 0;
+}
+
+<style>
+    :root{
+        --ink:#111827;
+        --brd:#e5e7eb;
+        --muted:#6b7280;
+        --shadow:0 2px 8px rgba(0,0,0,.06);
+        --radius:12px;
+        --gap:18px;
+        --wrapW:1060px;
+    }
+    html, body { height:100%; margin:0; background:#fff; }
+    .layout { display:flex; min-height:100dvh; width:100%; }
+    .content {
+        flex:1; display:flex; justify-content:center;
+        padding: 24px clamp(10px, 3vw, 24px);
+    }
+    .wrap { width:min(100%, var(--wrapW)); }
+    /* ===== CABEÇALHO (seta + título) ===== */
+    .header-line {
+        display:flex;
+        align-items:center;
+        gap:12px;
+        margin-bottom:20px;
+    }
+    .back {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:32px; height:32px;
+        border-radius:50%;
+        text-decoration:none;
+        color:#000;
+        font-size:20px;
+    }
+    .back svg{
+        width:20px;
+        height:20px;
+        stroke:#000;
+    }
+    h1 {
+        margin:0;
+        font-size:20px;
+        font-weight:700;
+        color:#000;
+    }
+    /* ===== GRID DE CARDS ===== */
+    .cards{ display:grid; gap:var(--gap); grid-template-columns: 1fr; }
+    @@media (min-width: 992px){
+        .cards{ grid-template-columns: 1fr 1fr; }
+    }
+    .card{
+        background:#f5f5f5; border:1px solid var(--brd);
+        border-radius:var(--radius); box-shadow:var(--shadow);
+        padding:14px;
+    }
+    .card h2{
+        margin:0 0 10px 0; font-size:13px; font-weight:800;
+        text-transform:uppercase;
+    }
+    .details{
+        display:grid; grid-template-columns:1fr 1fr;
+        gap:8px 16px; padding:10px 12px;
+    }
+    .col ul{ list-style:none; margin:0; padding:0; }
+    .li{ display:flex; gap:6px; font-size:12px; line-height:1.5; color:#111827; }
+    .k{ color:var(--muted); }
+    .actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:10px; }
+    .btn-sm{
+        width:26px; height:26px; border-radius:6px;
+        display:grid; place-items:center;
+        color:#fff; text-decoration:none; font-size:13px; border:0;
+    }
+    .edit{ background:#3b82f6; }
+    .del{ background:#ef4444; }
+</style>
+
+<body>
+<div class="layout">
+    <main class="content">
+        <div class="wrap">
+
+            <!-- ===== Cabeçalho igual à sua print (somente seta + título) ===== -->
+            <div class="header-line">
+                <a class="back" asp-action="Index" title="Voltar" aria-label="Voltar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </a>
+                <h1>@ViewData["Title"]</h1>
+            </div>
+
+            <!-- ===== Cards de campanhas ===== -->
+            <section class="cards">
+                @foreach (var c in Model ?? Enumerable.Empty<Cuida_.Models.campanhas.CampanhaDisponivelVM>())
+                {
+                    <article class="card">
+                        <h2>@((c.NomeCampanha ?? "Campanha de Vacinação").ToUpper())</h2>
+
+                        <div class="details">
+                            <div class="col">
+                                <ul>
+                                    <li class="li"><span class="k">Id:</span>        <span>@c.Id</span></li>
+                                    <li class="li"><span class="k">Início:</span>    <span>@c.DataInicio.ToString("dd/MM/yyyy")</span></li>
+                                    <li class="li"><span class="k">Fim:</span>       <span>@c.DataFim.ToString("dd/MM/yyyy")</span></li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="li"><span class="k">Ativa:</span>     <span>@(c.Ativa ? "Sim" : "Não")</span></li>
+                                    <li class="li"><span class="k">Médico:</span>    <span>@medicoId</span></li>
+                                    <li class="li"><span class="k">Período:</span>   <span>@c.DataInicio.ToString("MM/yyyy") - @c.DataFim.ToString("MM/yyyy")</span></li>
+                                </ul>
+                                <div class="actions">
+                                    <a class="btn-sm edit" asp-action="Edit" asp-route-id="@c.Id" title="Editar">✎</a>
+                                    <a class="btn-sm del" asp-action="Delete" asp-route-id="@c.Id" title="Excluir">🗑</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                }
+
+                @if (Model == null || !Model.Any())
+                {
+                    <article class="card">
+                        <h2>Sem campanhas</h2>
+                        <div class="details">
+                            <div class="col"><ul><li class="li"><span class="k">Aviso:</span><span>Nenhuma campanha cadastrada.</span></li></ul></div>
+                            <div class="col"><ul><li class="li"><span class="k">Ação:</span><span>Crie uma nova campanha.</span></li></ul></div>
+                        </div>
+                    </article>
+                }
+            </section>
+        </div>
+    </main>
+</div>
+</body>
