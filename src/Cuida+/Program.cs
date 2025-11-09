@@ -26,6 +26,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddAuthorization();
+builder.WebHost.UseUrls("http://0.0.0.0:5145");
 
 var app = builder.Build();
 
