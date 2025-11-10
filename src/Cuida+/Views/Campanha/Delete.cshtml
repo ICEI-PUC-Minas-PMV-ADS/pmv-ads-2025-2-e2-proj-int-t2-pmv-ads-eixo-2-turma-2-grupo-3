@@ -8,48 +8,43 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            
+
             <div class="card shadow-lg border-0 rounded-4 p-4">
-                <div class="card-body text-center">
-                    <h2 class="text-danger fw-bold mb-3">Excluir campanha</h2>
-                    <p class="fs-5 mb-4">Tem certeza que deseja excluir esta campanha?</p>
+                <div class="card-body d-flex flex-column justify-content-between">
 
-                    <div class="alert alert-warning text-start shadow-sm">
-                        <dl class="row mb-0">
-                            <dt class="col-sm-4 fw-semibold text-secondary">Nome:</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.NomeCampanha)</dd>
-
-                            <dt class="col-sm-4 fw-semibold text-secondary">Descrição:</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Descricao)</dd>
-
-                            <dt class="col-sm-4 fw-semibold text-secondary">Data início:</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataInicio)</dd>
-
-                            <dt class="col-sm-4 fw-semibold text-secondary">Data fim:</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataFim)</dd>
-
-                            <dt class="col-sm-4 fw-semibold text-secondary">Status:</dt>
-                            <dd class="col-sm-8">
-                                @(Model.Ativa ? 
-                                    "<span class='badge bg-success'>Ativa</span>" : 
-                                    "<span class='badge bg-secondary'>Inativa</span>")
-                            </dd>
-
-                            <dt class="col-sm-4 fw-semibold text-secondary">Clínica:</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Clinica.Email)</dd>
-                        </dl>
+                    <div class="text-center mb-4">
+                        <h2 class="text-danger fw-bold mb-2">Excluir campanha</h2>
+                        <p class="text-muted fs-5">Tem certeza que deseja excluir esta campanha?</p>
                     </div>
 
-                    <form asp-action="Delete" method="post" class="mt-4">
+                    <div class="card shadow-sm border-0 rounded-3 mb-4 p-3 bg-light">
+                        <h5 class="card-title text-primary fw-bold mb-2">
+                            @Html.DisplayFor(model => model.NomeCampanha)
+                        </h5>
+                        <p class="text-muted mb-3">
+                            @Html.DisplayFor(model => model.Descricao)
+                        </p>
+                        <p class="mb-0">
+                            <strong>Status:</strong>
+                            @Html.Raw(Model.Ativa
+                                ? "<span class='badge bg-success'>Ativa</span>"
+                                : "<span class='badge bg-secondary'>Inativa</span>")
+                        </p>
+                    </div>
+
+                    <form asp-action="Delete" method="post" class="mt-3">
                         <input type="hidden" asp-for="Id" />
 
                         <div class="d-flex justify-content-between">
                             <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2 fw-semibold">
                                 Cancelar
                             </a>
-                            <input type="submit" value="Excluir" class="btn btn-danger px-4 py-2 fw-semibold" />
+                            <button type="submit" class="btn btn-danger px-4 py-2 fw-semibold">
+                                Excluir
+                            </button>
                         </div>
                     </form>
+
                 </div>
             </div>
 
