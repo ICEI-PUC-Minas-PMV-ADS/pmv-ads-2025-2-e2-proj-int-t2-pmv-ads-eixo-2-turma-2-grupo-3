@@ -1,10 +1,18 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< HEAD
+    "\\docs",
+    "\\presentation",
+    "\\src"
+  ],
+  "SelectedNode": "\\src\\Cuida+.sln",
+=======
     "\\src",
     "\\src\\Cuida+",
     "\\src\\Cuida+\\Migrations"
   ],
   "SelectedNode": "\\src\\Cuida+\\Migrations\\AppDbContextModelSnapshot.cs",
+>>>>>>> develop
   "PreviewInSolutionExplorer": false
 }

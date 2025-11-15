@@ -1,15 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cuida_.Models.usuarios
+namespace Cuida_.Models.Usuarios
 {
     [Table("Pacientes")]
-    public class Paciente : Usuario
+    [Index(nameof(CPF), IsUnique = true)]
+    public class Paciente
     {
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Nome obrigatório")]
+        public string Nome { get; set; }
+
         [Required(ErrorMessage = "CPF obrigatório")]
-        public string Cpf { get; set; }
+        public string CPF { get; set; }
 
         [Required(ErrorMessage = "Cadastro Único obrigatório")]
         public int CadUnico { get; set; }
+
+        [Required]
+        public int UsuarioId { get; set; }
+
+        [ForeignKey("UsuarioId")]
+        public Usuario Usuario { get; set; }
     }
 }

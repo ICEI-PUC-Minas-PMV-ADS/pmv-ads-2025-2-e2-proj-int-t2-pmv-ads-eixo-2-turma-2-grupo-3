@@ -1,8 +1,8 @@
-﻿using Cuida_.Models.repository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Cuida_.Models.campanhas;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Cuida_.Repository;
+using Cuida_.Models;
 
 namespace Cuida_.Controllers
 {
@@ -16,10 +16,8 @@ namespace Cuida_.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {
-            var dados = await _context.Campanhas
-             .Include(c => c.Clinica)
-             .ToListAsync();
+        { 
+            var dados = await _context.Campanhas.ToListAsync();
 
             return View(dados);
         }
@@ -46,31 +44,27 @@ namespace Cuida_.Controllers
         }
         public async Task<IActionResult> Edit(int? id)
         {
+            var clinicasMock = new List<SelectListItem>
+           {
+              new SelectListItem { Value = "1", Text = "Clinica Teste" }
+            };
+            ViewBag.Clinicas = clinicasMock;
+            
             if (id == null)
                 return NotFound();
 
-            var dados = await _context.Campanhas
-                .Include(c => c.Clinica)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
-            if (dados == null)
+            var dados = await _context.Campanhas.FindAsync(id);
+            if(dados == null)
                 return NotFound();
 
-            var clinicasMock = new List<SelectListItem>
-        {
-            new SelectListItem { Value = "1", Text = "Clínica Teste" }
-        };
-            ViewBag.Clinicas = clinicasMock;
-
-            return View(dados);
+            return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Edit(int id, Campanha campanha)
-    {
+        {
             if (id != campanha.Id)
                 return NotFound();
-
+            
             if (ModelState.IsValid)
             {
                 _context.Campanhas.Update(campanha);

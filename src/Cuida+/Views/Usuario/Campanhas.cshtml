@@ -1,0 +1,158 @@
+﻿@using Cuida_.Models
+@model IEnumerable<Campanha>
+
+@{
+    ViewData["Title"] = "Campanhas Disponíveis";
+}
+
+<style>
+    .filter-box {
+        background-color: #e9ecef;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .filter-box .form-select,
+    .filter-box .form-control {
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+    }
+
+    .filter-box .form-label {
+        margin-bottom: .25rem;
+    }
+
+    .filter-box .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: end;
+    }
+
+    .card-campanha {
+        background-color: #e9ecef;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+        transition: all 0.2s ease-in-out;
+        min-height: 250px;
+    }
+
+    .card-campanha:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 1);
+    }
+
+    .card-campanha .divider {
+        border-top: 1px solid #d3d3d3;
+        margin-top: auto;
+        margin-bottom: 10px;
+    }
+
+    .main-content {
+        margin-left: 80px;
+    }
+
+    .card-campanha .btn-primary {
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        padding: 6px 18px;
+    }
+
+    @@media (max-width: 767.98px) {
+        .filter-box .col-md-4,
+        .filter-box .col-md-3,
+        .filter-box .col-md-2 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    @@media (min-width: 768px) {
+        .card-column {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+</style>
+
+<div class="main-content">
+    <div class="container mt-4">
+        <h4 class="mb-3 fw-bold">Filtrar campanha</h4>
+
+        <form method="get" asp-action="Index" class="filter-box mb-4">
+            <div class="form-row">
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label fw-semibold">Nome da Campanha</label>
+                    <input type="text" name="nome" class="form-control" placeholder="Digite o nome da campanha" />
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label fw-semibold">Especialidade</label>
+                    /* Mock de especialidades, substituir quando o backend ficar pronto */
+                    <select name="especialidade" class="form-select">
+                        <option value="">Selecione uma especialidade</option>
+                        <option>Cardiologia</option>
+                        <option>Pediatria</option>
+                        <option>Ginecologia</option>
+                        <option>Dermatologia</option>
+                        <option>Ortopedia</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <label class="form-label fw-semibold">Nome da Clínica</label>
+                    <input type="text" name="clinica" class="form-control" placeholder="Digite o nome da clínica" />
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label fw-semibold">Início</label>
+                    <input type="date" name="dataInicio" class="form-control" />
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <label class="form-label fw-semibold">Término</label>
+                    <input type="date" name="dataFim" class="form-control" />
+                </div>
+
+                <div class="col-12 text-end mt-2">
+                    <button type="reset" class="btn btn-danger me-2">LIMPAR</button>
+                    <button type="submit" class="btn btn-primary">BUSCAR</button>
+                </div>
+            </div>
+        </form>
+
+        <h4 class="fw-bold mb-3">Campanhas disponíveis</h4>
+
+        <div class="row g-4 d-flex flex-wrap">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var campanha in Model)
+                {
+                    <div class="card-column mb-4">
+                        <div class="card card-campanha h-100 d-flex flex-column p-3">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="fw-bold">@campanha.NomeCampanha</h5>
+                                <p><strong>Especialidade:</strong> @campanha.Descricao</p>
+                                <p><strong>Início:</strong> @campanha.DataInicio.ToShortDateString()</p>
+                                <p><strong>Fim:</strong> @campanha.DataFim.ToShortDateString()</p>
+
+                                <div class="divider"></div>
+                                <div class="text-end">
+                                    <a asp-action="Detalhes" asp-route-id="@campanha.Id" class="btn btn-primary btn-sm">
+                                        CONSULTAR
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted">Nenhuma campanha encontrada.</p>
+            }
+        </div>
+    </div>
+</div>

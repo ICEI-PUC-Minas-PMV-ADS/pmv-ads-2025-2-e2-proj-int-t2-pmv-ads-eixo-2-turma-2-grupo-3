@@ -1,70 +1,58 @@
-﻿@model Cuida_.Models.campanhas.Campanha
-@await Html.PartialAsync("_MenuPartial")
+﻿@using Cuida_.Models.Usuarios
+@using Cuida_.Models
+@model Campanha
 
 @{
     ViewData["Title"] = "Editar campanha";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
+<h1>EDITAR CAMPANHA</h1>
 
-            <div class="card shadow-lg p-4 rounded-4 border-0">
-                <h2 class="text-center mb-4 text-primary fw-bold">Editar campanha</h2>
-
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-                    <input type="hidden" asp-for="Id" />
-
-                    <div class="form-group mb-3">
-                        <label asp-for="NomeCampanha" class="form-label fw-semibold"></label>
-                        <input asp-for="NomeCampanha" class="form-control form-control-lg" placeholder="Digite o nome da campanha" />
-                        <span asp-validation-for="NomeCampanha" class="text-danger small"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Descricao" class="form-label fw-semibold"></label>
-                        <input asp-for="Descricao" class="form-control form-control-lg" placeholder="Descrição da campanha" />
-                        <span asp-validation-for="Descricao" class="text-danger small"></span>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="DataInicio" class="form-label fw-semibold"></label>
-                            <input asp-for="DataInicio" type="date" class="form-control form-control-lg" />
-                            <span asp-validation-for="DataInicio" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="DataFim" class="form-label fw-semibold"></label>
-                            <input asp-for="DataFim" type="date" class="form-control form-control-lg" />
-                            <span asp-validation-for="DataFim" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" asp-for="Ativa" />
-                        <label class="form-check-label ms-1 fw-semibold">@Html.DisplayNameFor(model => model.Ativa)</label>
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <label class="form-label fw-semibold">Clínica</label>
-                        <select asp-for="ClinicaId" class="form-select form-select-lg" asp-items="ViewBag.Clinicas">
-                            <option value="">-- Selecione uma clínica --</option>
-                        </select>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                        <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2 fw-semibold">Voltar</a>
-                        <input type="submit" value="Salvar alterações" class="btn btn-success px-4 py-2 fw-semibold" />
-                    </div>
-                </form>
+<h4>Campanha</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NomeCampanha" class="control-label"></label>
+                <input asp-for="NomeCampanha" class="form-control" />
+                <span asp-validation-for="NomeCampanha" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFim" class="control-label"></label>
+                <input asp-for="DataFim" class="form-control" />
+                <span asp-validation-for="DataFim" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Ativa" /> @Html.DisplayNameFor(model => model.Ativa)
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Clínica</label>
+                <select asp-for="ClinicaId" class="form-control" asp-items="ViewBag.Clinicas">
+                    <option value="">-- Selecione uma clínica --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
