@@ -31,7 +31,7 @@ namespace Cuida_.Controllers
             {
                 await Cadastrar(cadastroDTO);
                 TempData["Message"] = "Usuário cadastrado com sucesso!";
-                return RedirectToAction("Index");
+                return View("~/Views/Usuario/Login.cshtml");
             }
             catch (DbUpdateException)
             {

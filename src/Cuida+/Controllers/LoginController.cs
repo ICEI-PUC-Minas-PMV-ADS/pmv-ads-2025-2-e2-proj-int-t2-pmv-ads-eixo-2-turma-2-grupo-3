@@ -39,7 +39,6 @@ namespace Cuida_.Controllers
                 return RedirectToAction("Index");
             }
 
-            TempData["Message"] = "Login efetuado com sucesso";
             return RedirectToAction("Index", "Home");
         }
 
