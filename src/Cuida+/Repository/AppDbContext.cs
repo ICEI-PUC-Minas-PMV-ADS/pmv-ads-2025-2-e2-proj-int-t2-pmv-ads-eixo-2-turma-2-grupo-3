@@ -13,5 +13,19 @@ namespace Cuida_.Repository
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
         public DbSet<Campanha> Campanhas { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // 🔥 Forçar exatamente o nome Tabela/Coluna igual ao MySQL
+            modelBuilder.Entity<Medico>().ToTable("Medicos");
+            
+            modelBuilder.Entity<Medico>()
+                .Property(m => m.UsuarioId)
+                .HasColumnName("UsuarioId");
+        }
     }
 }

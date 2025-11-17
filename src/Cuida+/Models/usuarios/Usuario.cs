@@ -10,13 +10,16 @@ namespace Cuida_.Models.Usuarios
     {
         [Key]
         public int Id { get; set; }
-        
+
         [Required(ErrorMessage = "E-mail obrigatório")]
         [EmailAddress(ErrorMessage = "E-mail inválido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Senha obrigatória")]
         public string Senha { get; set; }
+
         public string TipoRegistro { get; set; }
+
+        public string Nome { get; set; }
     }
 }

@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+@model Cuida_.Models.Usuarios.Medico
+@model Cuida_.Models.Usuarios.Usuarios
+@await Html.PartialAsync("_MenuPartial")
+
+<style>
+/* Largura container */
+.perfil-container {
+    max-width: 1150px;
+}
+
+/* Botão Editar */
+.btn-editar {
+    background-color: #0086FF;
+    border: none;
+}
+
+/* Desloca o conteúdo para a direita por causa da sidebar */
+.main-content {
+    margin-left: 90px; /* ajuste esse valor conforme o tamanho da sua sidebar */
+    padding: 30px;
+}
+
+/* Card igual ao do modelo */
+.profile-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+</style>
+
+<div class="main-content">
+
+    <div class="profile-card">
+
+        <!-- Header da imagem + nome -->
+        <div class="d-flex align-items-center mb-4">
+            <h4 class="mb-0">@Model.Nome</h4>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Nome completo</label>
+                <input class="form-control" value="@Model.Nome" disabled />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Email</label>
+                <input class="form-control" 
+                       value="@(Model.Usuario?.Email ?? "Não informado")" disabled />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Especialidade</label>
+                <input class="form-control" value="@Model.Especialidade" disabled />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">CRM</label>
+                <input class="form-control" value="@Model.CRM" disabled />
+            </div>
+
+        </div>
+
+        <div class="text-end mt-4">
+            <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary px-5 btn-editar">
+                EDITAR
+            </a>
+        </div>
+
+    </div>
+
+</div>
