@@ -1,4 +1,4 @@
-using Cuida_.Repository;
+﻿using Cuida_.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<Cuida_.Services.EmailService>();
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(
     builder.Configuration.GetConnectionString("DefaultConnection"),

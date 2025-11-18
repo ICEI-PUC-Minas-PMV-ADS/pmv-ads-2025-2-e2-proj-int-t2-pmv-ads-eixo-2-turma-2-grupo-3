@@ -18,5 +18,8 @@ namespace Cuida_.Models.Usuarios
         [Required(ErrorMessage = "Senha obrigatória")]
         public string Senha { get; set; }
         public string TipoRegistro { get; set; }
+
+        public string? TokenRecuperacao { get; set; }
+        public DateTime? TokenExpiracao { get; set; }
     }
 }
