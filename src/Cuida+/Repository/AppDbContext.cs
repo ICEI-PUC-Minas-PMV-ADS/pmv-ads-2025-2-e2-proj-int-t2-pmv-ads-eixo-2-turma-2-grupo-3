@@ -13,5 +13,6 @@ namespace Cuida_.Repository
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
         public DbSet<Campanha> Campanhas { get; set; }
+        public DbSet<Consulta> Consultas { get; set; }
     }
 }
