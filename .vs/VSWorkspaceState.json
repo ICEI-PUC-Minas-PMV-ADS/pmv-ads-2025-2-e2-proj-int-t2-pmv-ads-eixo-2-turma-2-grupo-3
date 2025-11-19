@@ -1,18 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-<<<<<<< HEAD
-    "\\docs",
-    "\\presentation",
-    "\\src"
+    ""
   ],
-  "SelectedNode": "\\src\\Cuida+.sln",
-=======
-    "\\src",
-    "\\src\\Cuida+",
-    "\\src\\Cuida+\\Migrations"
-  ],
-  "SelectedNode": "\\src\\Cuida+\\Migrations\\AppDbContextModelSnapshot.cs",
->>>>>>> develop
+  "SelectedNode": "\\C:\\Users\\User\\Source\\Repos\\pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3",
   "PreviewInSolutionExplorer": false
 }
