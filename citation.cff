@@ -1,29 +1,26 @@
 message: Please cite this software using these metadata.
-title:
+title: Cuida+
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Eller Andrade Machado
+    given-names: Breno
+  - family-names: Rezende Costa
+    given-names: Caio 
+  - family-names: Figueiredo Souza Oliveira
+    given-names: Gustavo 
+  - family-names: Alexis Biver
+    given-names: Raphael 
+  - family-names: Lellis Moreira
+    given-names: Thais 
+  - family-names: Reck Tavares
+    given-names: Vitor 
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: da Costa
+    given-names: José Wilson
 keywords:
-  - 
-  - 
-repository-code: 
+  - Saúde
+  - Campanhas
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e2-proj-int-t2-pmv-ads-eixo-2-turma-2-grupo-3
 version: 1.0.0
-date-released: 2023-10-31
+
+date-released: 2025-12-08
