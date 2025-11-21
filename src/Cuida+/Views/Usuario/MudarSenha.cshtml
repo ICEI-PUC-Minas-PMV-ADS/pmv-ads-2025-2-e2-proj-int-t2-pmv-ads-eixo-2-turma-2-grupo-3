@@ -1,0 +1,141 @@
+﻿@model Cuida_.Models.ViewModels.TrocarSenhaViewModel
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+@{
+    ViewData["Title"] = "Mudar Senha";
+}
+
+@await Html.PartialAsync("_MenuPartial")
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        background-color: #f0f2f5;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .password-card {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        padding: 50px 40px;
+        border-radius: 25px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+        width: 100%;
+        max-width: 600px;
+        transition: all 0.3s ease;
+    }
+
+    .password-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .password-card h3 {
+        font-weight: 700;
+        color: #222;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .form-control {
+        border-radius: 12px;
+        padding: 12px;
+    }
+
+    .form-control[disabled] {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        color: #495057;
+    }
+
+    label.fw-semibold {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+
+    .btn-primary, .btn-outline-secondary {
+        border-radius: 12px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #e2e6ea;
+    }
+
+    .text-danger {
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="main-content">
+    <div class="password-card">
+
+        <h3>Alterar Senha</h3>
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["MensagemSucesso"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <form asp-action="MudarSenha" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+                <!-- Senha atual -->
+                <div class="col-12">
+                    <label asp-for="SenhaAtual" class="form-label fw-semibold"></label>
+                    <input asp-for="SenhaAtual" class="form-control shadow-sm" placeholder="Digite sua senha atual" />
+                    <span asp-validation-for="SenhaAtual" class="text-danger"></span>
+                </div>
+
+                <!-- Nova senha -->
+                <div class="col-12">
+                    <label asp-for="NovaSenha" class="form-label fw-semibold"></label>
+                    <input asp-for="NovaSenha" class="form-control shadow-sm" placeholder="Digite a nova senha" />
+                    <span asp-validation-for="NovaSenha" class="text-danger"></span>
+                </div>
+
+                <!-- Confirmar nova senha -->
+                <div class="col-12">
+                    <label asp-for="ConfirmarSenha" class="form-label fw-semibold"></label>
+                    <input asp-for="ConfirmarSenha" class="form-control shadow-sm" placeholder="Confirme a nova senha" />
+                    <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="d-flex justify-content-end mt-4">
+                <a asp-action="Perfil" class="btn btn-outline-secondary me-3">Cancelar</a>
+                <button type="submit" class="btn btn-primary shadow-sm">Mudar Senha</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

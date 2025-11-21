@@ -20,7 +20,7 @@ namespace Cuida_.Repository
         {
             base.OnModelCreating(modelBuilder);
 
-            // 🔥 Forçar exatamente o nome Tabela/Coluna igual ao MySQL
+            //  Forçar o nome Tabela/Coluna igual ao MySQL
             modelBuilder.Entity<Medico>().ToTable("Medicos");
             
             modelBuilder.Entity<Medico>()
