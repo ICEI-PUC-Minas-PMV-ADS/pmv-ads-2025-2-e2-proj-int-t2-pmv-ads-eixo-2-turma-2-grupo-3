@@ -4,6 +4,7 @@ using Cuida_.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cuida_.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251118145225_CreateConsulta")]
+    partial class CreateConsulta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,77 +102,6 @@ namespace Cuida_.Migrations
                     b.HasIndex("PacienteId");
 
                     b.ToTable("Consultas");
-            modelBuilder.Entity("Cuida_.Models.Especialidade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nomenclatura")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Especialidades");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Registros.CNPJ", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Numero")
-                        .IsUnique();
-
-                    b.ToTable("CNPJ");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Registros.CPF", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Numero")
-                        .IsUnique();
-
-                    b.ToTable("CPF");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Registros.CRM", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Numero")
-                        .IsUnique();
-
-                    b.ToTable("CRM");
                 });
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
@@ -283,12 +215,6 @@ namespace Cuida_.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("TipoRegistro")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("TokenExpiracao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("TokenRecuperacao")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

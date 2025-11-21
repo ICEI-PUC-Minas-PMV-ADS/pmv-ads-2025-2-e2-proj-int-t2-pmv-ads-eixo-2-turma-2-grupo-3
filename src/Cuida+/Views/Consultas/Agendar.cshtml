@@ -1,0 +1,171 @@
+﻿@model Cuida_.Models.AgendarViewModel
+
+@{
+    ViewData["Title"] = "Agendar Consulta";
+    var culture = new System.Globalization.CultureInfo("pt-BR");
+
+    Dictionary<DayOfWeek, string> diasPt = new()
+    {
+        { DayOfWeek.Monday,    "Segunda" },
+        { DayOfWeek.Tuesday,   "Terça" },
+        { DayOfWeek.Wednesday, "Quarta" },
+        { DayOfWeek.Thursday,  "Quinta" },
+        { DayOfWeek.Friday,    "Sexta" }
+    };
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+<style>
+    table td { padding: 2px !important; }
+    .slot-btn, .disabled-slot {
+        padding: 3px 5px;
+        font-size: 0.70rem;
+        width: 70px;
+        border-radius: 4px;
+    }
+    th, td { font-size: 0.75rem; }
+</style>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Agendar Consulta</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Horário</th>
+
+                        @foreach (var dia in Model.Dias)
+                        {
+                            <th>@diasPt[dia.DayOfWeek] @dia.ToString("dd/MM")</th>
+                        }
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var hora in Model.Horarios)
+                    {
+                        <tr>
+                            <td>@hora.ToString(@"hh\:mm")</td>
+
+                            @foreach (var dia in Model.Dias)
+                            {
+                                var slot = dia.Date + hora;
+                                var ocupado = Model.SlotsOcupados.Any(s => s == slot);
+                                var passado = slot < DateTime.Now;
+
+                                if (ocupado || passado)
+                                {
+                                    <td>
+                                        <button class="btn btn-danger disabled-slot" disabled>
+                                            @slot.ToString("HH:mm")
+                                        </button>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <button class="btn btn-primary slot-btn"
+                                                data-slot="@slot.ToString("o")">
+                                            @slot.ToString("HH:mm")
+                                        </button>
+                                    </td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <a asp-action="Index" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+</div>
+
+<form id="confirmForm" asp-action="ConfirmarAgendamento" method="post">
+    <input type="hidden" name="Horario" id="Horario" />
+    @Html.AntiForgeryToken()
+</form>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Agendamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p id="confirmText"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="confirmBtn" type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SucessoAgendamento"] != null)
+{
+    <div class="modal fade" id="sucessoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+                <h5 class="mb-3 text-success">Consulta agendada com sucesso!</h5>
+                <p>Redirecionando...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sucessoModal = new bootstrap.Modal(document.getElementById('sucessoModal'));
+            sucessoModal.show();
+
+            setTimeout(() => {
+                window.location.href = "/Consultas/AgendarView";
+            }, 2000);
+        });
+    </script>
+}
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.slot-btn');
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const iso = this.getAttribute('data-slot');
+            const date = new Date(iso);
+            const texto = date.toLocaleString("pt-BR");
+
+            document.getElementById('confirmText').innerText =
+                "Confirmar agendamento para: " + texto;
+
+            document.getElementById('Horario').value = iso;
+            modal.show();
+        });
+    });
+
+    document.getElementById('confirmBtn')
+        .addEventListener('click', () =>
+            document.getElementById('confirmForm').submit());
+});
+</script>
+}
+
+
+
+
+
+
+
+
+

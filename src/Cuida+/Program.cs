@@ -19,7 +19,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Views/Usuario/Login";
+        options.LoginPath = "/Login";
         options.ExpireTimeSpan = TimeSpan.FromHours(2);        
         options.SlidingExpiration = true;                    
         options.Cookie.HttpOnly = true;
