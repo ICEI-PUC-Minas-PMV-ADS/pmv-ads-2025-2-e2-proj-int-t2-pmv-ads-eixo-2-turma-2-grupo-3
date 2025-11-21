@@ -14,8 +14,12 @@ namespace Cuida_.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var especialidades = await _context.Especialidades.ToListAsync();
+
+            ViewBag.Especialidades = especialidades;
+
             return View("~/Views/Usuario/Cadastro.cshtml");
         }
 
