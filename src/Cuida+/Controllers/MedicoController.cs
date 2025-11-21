@@ -18,6 +18,10 @@ namespace Cuida_.Controllers
         public async Task<IActionResult> Index()
         {
             var medicos = await _context.Medicos.ToListAsync();
+            var especialidades = await _context.Especialidades.ToListAsync();
+
+            ViewBag.Especialidades = especialidades;
+
             return View(medicos);
         }
 

@@ -94,7 +94,13 @@
                     <input asp-for="CRM" class="form-control" placeholder="000000" />
 
                     <label asp-for="Especialidade">Especialidade</label>
-                    <input asp-for="Especialidade" class="form-control" placeholder="Cardiologia" />
+                    <select asp-for="Especialidade" id="tipoRegistro" class="form-control">
+                                        <option value="">Selecione a especialidade</option>
+                                        @foreach (var esp in ViewBag.Especialidades)
+                                        {
+                                            <option value="@esp.crm">@esp.crm</option>
+                                        }
+                     </select>
                 </div>
 
                 <div id="camposClinica" style="display:none;">
