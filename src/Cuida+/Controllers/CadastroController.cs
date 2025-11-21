@@ -3,6 +3,7 @@ using Cuida_.Models.Usuarios;
 using Cuida_.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Cuida_.Models.Registros;
 
 namespace Cuida_.Controllers
 {
@@ -29,6 +30,36 @@ namespace Cuida_.Controllers
             if(!ModelState.IsValid)             {
                 TempData["Message"] = "Erro ao cadastrar usuário. \n Verifique os dados";
                 return RedirectToAction("Index");
+            }
+
+            switch (cadastroDTO.TipoRegistro)
+            {
+                case "paciente":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CPF) || 
+                        !await _context.Set<CPF>().AnyAsync(c => c.Numero == cadastroDTO.CPF))
+                    {
+                        TempData["Message"] = "CPF não encontrado na base de CPFs. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
+
+                case "medico":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CRM) ||
+                        !await _context.Set<CRM>().AnyAsync(c => c.Numero == cadastroDTO.CRM))
+                    {
+                        TempData["Message"] = "CRM não encontrado na base de CRMs. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
+
+                case "clinica":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CNPJ) ||
+                        !await _context.Set<CNPJ>().AnyAsync(c => c.Numero == cadastroDTO.CNPJ))
+                    {
+                        TempData["Message"] = "CNPJ não encontrado na base de CNPJs. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
             }
 
             try

@@ -25,7 +25,7 @@ namespace Cuida_.Controllers
             return View("~/Views/Usuario/Login.cshtml");
         }
 
-        [HttpPost]
+        [HttpPost("auth")]
         public async Task<IActionResult> Login(UsuarioLoginDTO loginDTO)
         {
             if (!ModelState.IsValid)
