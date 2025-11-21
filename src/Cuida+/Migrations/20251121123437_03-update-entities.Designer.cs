@@ -4,6 +4,7 @@ using Cuida_.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cuida_.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251121123437_03-update-entities")]
+    partial class _03updateentities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,33 +75,6 @@ namespace Cuida_.Migrations
                     b.ToTable("Campanhas");
                 });
 
-            modelBuilder.Entity("Cuida_.Models.Consulta", b =>
-                {
-                    b.Property<int>("idConsulta")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("idConsulta"));
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("Horario")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("idConsulta");
-
-                    b.HasIndex("MedicoId");
-
-                    b.HasIndex("PacienteId");
-
-                    b.ToTable("Consultas");
             modelBuilder.Entity("Cuida_.Models.Especialidade", b =>
                 {
                     b.Property<int>("Id")
@@ -323,25 +299,6 @@ namespace Cuida_.Migrations
                         .IsRequired();
 
                     b.Navigation("Clinica");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Consulta", b =>
-                {
-                    b.HasOne("Cuida_.Models.Usuarios.Medico", "Medico")
-                        .WithMany()
-                        .HasForeignKey("MedicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Cuida_.Models.Usuarios.Paciente", "Paciente")
-                        .WithMany()
-                        .HasForeignKey("PacienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Medico");
-
-                    b.Navigation("Paciente");
                 });
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
