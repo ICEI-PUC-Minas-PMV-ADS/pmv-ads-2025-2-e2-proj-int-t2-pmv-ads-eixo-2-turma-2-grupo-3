@@ -1,4 +1,5 @@
 ﻿using Cuida_.Models;
+using Cuida_.Models.Registros;
 using Cuida_.Models.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,5 +16,8 @@ namespace Cuida_.Repository
         public DbSet<Campanha> Campanhas { get; set; }
         public DbSet<Especialidades> Especialidades { get; set; }
         public DbSet<Consulta> Consultas { get; set; }
+        public DbSet<CPF> CPFs { get; set; }
+        public DbSet<CRM> CRMs { get; set; }
+        public DbSet<CNPJ> CNPJs { get; set; }
     }
 }
