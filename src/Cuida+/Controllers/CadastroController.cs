@@ -35,10 +35,10 @@ namespace Cuida_.Controllers
             switch (cadastroDTO.TipoRegistro)
             {
                 case "paciente":
-                    if (string.IsNullOrWhiteSpace(cadastroDTO.CPF) || 
-                        !await _context.Set<CPF>().AnyAsync(c => c.Numero == cadastroDTO.CPF))
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CadUnico) || 
+                        !await _context.Set<CadUnico>().AnyAsync(c => c.Numero == cadastroDTO.CadUnico))
                     {
-                        TempData["Message"] = "CPF não encontrado na base de CPFs. Verifique o número informado.";
+                        TempData["Message"] = "CadUnico não encontrado na base de dados. Verifique o número informado.";
                         return RedirectToAction("Index");
                     }
                     break;
@@ -47,7 +47,7 @@ namespace Cuida_.Controllers
                     if (string.IsNullOrWhiteSpace(cadastroDTO.CRM) ||
                         !await _context.Set<CRM>().AnyAsync(c => c.Numero == cadastroDTO.CRM))
                     {
-                        TempData["Message"] = "CRM não encontrado na base de CRMs. Verifique o número informado.";
+                        TempData["Message"] = "CRM não encontrado na base de dados. Verifique o número informado.";
                         return RedirectToAction("Index");
                     }
                     break;
@@ -56,7 +56,7 @@ namespace Cuida_.Controllers
                     if (string.IsNullOrWhiteSpace(cadastroDTO.CNPJ) ||
                         !await _context.Set<CNPJ>().AnyAsync(c => c.Numero == cadastroDTO.CNPJ))
                     {
-                        TempData["Message"] = "CNPJ não encontrado na base de CNPJs. Verifique o número informado.";
+                        TempData["Message"] = "CNPJ não encontrado na base de dados. Verifique o número informado.";
                         return RedirectToAction("Index");
                     }
                     break;
@@ -75,7 +75,7 @@ namespace Cuida_.Controllers
             }
             catch (Exception)
             {
-                TempData["Message"] = "Erro interno ao cadastrar usuário. Tente novamente mais tarde";
+                TempData["Message"] = "Favor preencher todos os campos.";
                 return RedirectToAction("Index");
             }
         }
@@ -90,7 +90,7 @@ namespace Cuida_.Controllers
                     {
                         Nome = cadastroDTO.Nome,
                         CPF = cadastroDTO.CPF,
-                        CadUnico = (int)cadastroDTO.CadUnico,
+                        CadUnico = cadastroDTO.CadUnico,
                         UsuarioId = usuario.Id
                     };
 
