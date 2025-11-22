@@ -29,6 +29,11 @@ Para cada caso de teste definido no Plano de Testes de Software, realize o regis
 |	Requisito Associado 	| RF-01/02 – O cadastro deve validar usuário e senha |
 | Registro de evidência | [Evidência](https://drive.google.com/file/d/16VPeLINnv4ZQOYjGSQpgcNM3v9JyV9-l/view?usp=drive_link) |
 
+| **Caso de Teste** 	| **CT06 – Paciente marcar consultas** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-04 – O paciente deve poder agendar consultas |
+| Registro de evidência | [Evidência](https://drive.google.com/file/d/14lPW0LVZgBEPADwU1Y3wIx-Dm-sUeJ3v/view?usp=drive_link) |
+
 ## Relatório de testes de software
 
 Apresente e discuta detalhadamente os resultados obtidos nos testes realizados, destacando tanto os pontos fortes quanto as fragilidades identificadas na solução. Explique como os aspectos positivos contribuem para o desempenho e a usabilidade do sistema, e como os pontos fracos impactam sua eficácia.
