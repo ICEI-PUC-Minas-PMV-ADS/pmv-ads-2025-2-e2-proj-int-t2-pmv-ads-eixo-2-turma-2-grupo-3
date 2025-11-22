@@ -275,7 +275,14 @@ namespace Cuida_.Controllers
             };
 
             var ocupados = await _context.Consultas
-                .Select(c => c.Horario)
+                .Select(c => new DateTime(
+                    c.Horario.Year,
+                    c.Horario.Month,
+                    c.Horario.Day,
+                    c.Horario.Hour,
+                    c.Horario.Minute,
+                    0
+                ))
                 .ToListAsync();
 
             var model = new AgendarViewModel
@@ -291,22 +298,50 @@ namespace Cuida_.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarAgendamento(ConfirmarAgendamentoDto dto)
+        public async Task<IActionResult> ConfirmarAgendamento(string Horario)
         {
+            if (string.IsNullOrEmpty(Horario)) return BadRequest();
+
+            long ticks;
+            if (!long.TryParse(Horario, out ticks)) return BadRequest();
+
             var paciente = await _context.Pacientes.Include(p => p.Usuario)
                 .FirstOrDefaultAsync(p => p.Usuario.Email == User.FindFirstValue(ClaimTypes.Email));
 
             if (paciente == null) return Unauthorized();
 
-            if (dto.Horario <= DateTime.Now) return BadRequest();
+            var horarioFromTicks = new DateTime(ticks);
+
+            var horarioNormalizado = new DateTime(
+                horarioFromTicks.Year,
+                horarioFromTicks.Month,
+                horarioFromTicks.Day,
+                horarioFromTicks.Hour,
+                horarioFromTicks.Minute,
+                0
+            );
 
             bool medicoOcupado = await _context.Consultas
-                .AnyAsync(c => c.Horario == dto.Horario && c.MedicoId == 0);
+                .AnyAsync(c =>
+                    c.MedicoId == 1 &&
+                    c.Horario.Year == horarioNormalizado.Year &&
+                    c.Horario.Month == horarioNormalizado.Month &&
+                    c.Horario.Day == horarioNormalizado.Day &&
+                    c.Horario.Hour == horarioNormalizado.Hour &&
+                    c.Horario.Minute == horarioNormalizado.Minute
+                );
 
             if (medicoOcupado) return Conflict();
 
             bool pacienteOcupado = await _context.Consultas
-                .AnyAsync(c => c.Horario == dto.Horario && c.PacienteId == paciente.Id);
+                .AnyAsync(c =>
+                    c.PacienteId == paciente.Id &&
+                    c.Horario.Year == horarioNormalizado.Year &&
+                    c.Horario.Month == horarioNormalizado.Month &&
+                    c.Horario.Day == horarioNormalizado.Day &&
+                    c.Horario.Hour == horarioNormalizado.Hour &&
+                    c.Horario.Minute == horarioNormalizado.Minute
+                );
 
             if (pacienteOcupado) return Conflict();
 
@@ -314,8 +349,8 @@ namespace Cuida_.Controllers
             {
                 PacienteId = paciente.Id,
                 MedicoId = 1,
-                Data = dto.Horario.Date,
-                Horario = dto.Horario
+                Data = horarioNormalizado.Date,
+                Horario = horarioNormalizado
             };
 
             _context.Consultas.Add(consulta);
@@ -346,3 +381,5 @@ namespace Cuida_.Controllers
         }
     }
 }
+
+

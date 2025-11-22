@@ -52,8 +52,9 @@
 
                             @foreach (var dia in Model.Dias)
                             {
-                                var slot = dia.Date + hora;
-                                var ocupado = Model.SlotsOcupados.Any(s => s == slot);
+                                var slot = new DateTime(dia.Year, dia.Month, dia.Day, hora.Hours, hora.Minutes, 0);
+                                var ocupado = Model.SlotsOcupados
+                                    .Any(s => s.Date == slot.Date && s.TimeOfDay == slot.TimeOfDay);
                                 var passado = slot < DateTime.Now;
 
                                 if (ocupado || passado)
@@ -68,7 +69,8 @@
                                 {
                                     <td>
                                         <button class="btn btn-primary slot-btn"
-                                                data-slot="@slot.ToString("o")">
+                                                data-slot="@slot.ToString("o")"
+                                                data-ticks="@slot.Ticks">
                                             @slot.ToString("HH:mm")
                                         </button>
                                     </td>
@@ -142,14 +144,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     buttons.forEach(btn => {
         btn.addEventListener('click', function () {
-            const iso = this.getAttribute('data-slot');
-            const date = new Date(iso);
+            const slotIso = this.getAttribute('data-slot');
+            const slotTicks = this.getAttribute('data-ticks');
+            const date = new Date(slotIso);
             const texto = date.toLocaleString("pt-BR");
 
             document.getElementById('confirmText').innerText =
                 "Confirmar agendamento para: " + texto;
 
-            document.getElementById('Horario').value = iso;
+            document.getElementById('Horario').value = slotTicks;
             modal.show();
         });
     });
@@ -160,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 }
+
 
 
 
