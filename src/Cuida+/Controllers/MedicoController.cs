@@ -41,5 +41,48 @@ namespace Cuida_.Controllers
 
             return View("CampanhasDisponiveis", campanhas);
         }
+
+        [HttpGet("medico/horariosMarcados")]
+        public async Task<IActionResult> horariosMarcados()
+        {
+            var consultas = await _context.Consultas
+                .Include(c => c.Paciente)
+                .Include(c => c.Medico)
+                .ToListAsync();
+
+            return View("horariosMarcadosMedico", consultas);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Consulta consultaAtualizada)
+        {
+            var consulta = await _context.Consultas.FindAsync(consultaAtualizada.IdConsulta);
+
+            if (consulta == null)
+            {
+                TempData["ErrorMessage"] = "Consulta não encontrada.";
+                return RedirectToAction("horariosMarcados");
+            }
+
+            consulta.Data = consultaAtualizada.Data;
+
+            consulta.Horario = consultaAtualizada.Data.Date
+                .AddHours(consultaAtualizada.Horario.Hour)
+                .AddMinutes(consultaAtualizada.Horario.Minute);
+
+            try
+            {
+                _context.Update(consulta);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Horário atualizado com sucesso!";
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Erro ao atualizar horário.";
+            }
+
+            return RedirectToAction("horariosMarcados");
+        }
+
     }
 }
