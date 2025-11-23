@@ -1,0 +1,194 @@
+﻿@model Cuida_.Models.ViewModels.PerfilViewModel
+
+@{
+    ViewData["Title"] = "Perfil";
+    // MANTEMOS NULL, mas garantimos que o CSS necessário está aqui ou em um arquivo vinculado
+    Layout = null; 
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+@await Html.PartialAsync("_MenuPartial")
+
+<style>
+    /* 1. ESTILOS GERAIS - Garante o fundo e o centramento total */
+    body, html {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .main-content {
+        /* Centra o conteúdo na tela */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    /* 2. ESTILO DO CARTÃO - Restaura o visual de caixa arredondada */
+    .profile-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 50px 40px;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 600px;
+        transition: all 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    .profile-card h4 {
+        font-weight: 700;
+        color: #333;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+    }
+
+    /* 3. ESTILO DOS INPUTS E COLUNAS */
+    .form-control {
+        border-radius: 15px;
+        padding: 14px;
+        font-weight: 500;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+    }
+
+    label.fw-bold {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+    
+    /* Garante espaçamento entre as linhas de colunas */
+    .row.g-3 > [class*="col-"] {
+        margin-bottom: 20px;
+    }
+
+    /* 4. ESTILO DOS BOTÕES */
+    .text-end {
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    /* Botão EDITAR (Azul) */
+    .btn-editar {
+        border-radius: 15px;
+        padding: 12px 35px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        background-color: #0D99FF;
+        color: #fff;
+        border: none;
+        box-shadow: 0 5px 15px rgba(13,153,255,0.3);
+    }
+
+    .btn-editar:hover {
+        background-color: #0b80cc;
+        box-shadow: 0 8px 20px rgba(13,153,255,0.5);
+    }
+    
+    /* Botão MUDAR SENHA (Bordas) */
+    .btn-mudar-senha {
+        border-radius: 15px;
+        padding: 12px 35px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        border: 1px solid #ced4da; 
+        background-color: #fff;
+        color: #495057;
+        text-decoration: none; /* Garante que o link A não tenha underline */
+        display: inline-block;
+    }
+
+    .btn-mudar-senha:hover {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+</style>
+
+<div class="main-content">
+    <div class="profile-card">
+        <h4>Perfil da @Model.TipoRegistro</h4>
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["MensagemSucesso"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["MensagemErro"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        
+        <form asp-action="Perfil" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TipoRegistro" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+                
+                <div class="col-12 col-md-6">
+                    <label asp-for="Nome" class="fw-bold">Nome completo</label>
+                    <input asp-for="Nome" class="form-control" placeholder="Seu nome completo" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label asp-for="Email" class="fw-bold"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Seu e-mail de acesso" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                
+                @if (Model.TipoRegistro == "Clinica")
+                {
+                    <div class="col-12 col-md-6">
+                        <label asp-for="NomeClinica" class="fw-bold">Nome da Clínica</label>
+                        <input asp-for="NomeClinica" class="form-control" placeholder="Nome legal da clínica" />
+                        <span asp-validation-for="NomeClinica" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="CNPJ" class="fw-bold"></label>
+                        <input asp-for="CNPJ" class="form-control" placeholder="00.000.000/0000-00" />
+                        <span asp-validation-for="CNPJ" class="text-danger"></span>
+                    </div>
+                }
+                
+                <div class="col-12">
+                    <div class="text-end">
+                        <a asp-action="MudarSenha" class="btn-mudar-senha me-3">MUDAR SENHA</a>
+                        <button type="submit" class="btn btn-editar">EDITAR</button> 
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+}

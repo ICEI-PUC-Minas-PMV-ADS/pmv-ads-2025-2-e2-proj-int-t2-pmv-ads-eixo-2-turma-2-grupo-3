@@ -4,6 +4,7 @@ using Cuida_.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cuida_.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251122040134_AjustesClinica")]
+    partial class AjustesClinica
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,8 +84,7 @@ namespace Cuida_.Migrations
                     b.HasIndex("CNPJ")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Clinicas");
                 });
@@ -116,8 +118,7 @@ namespace Cuida_.Migrations
                     b.HasIndex("CRM")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Medicos", (string)null);
                 });
@@ -149,8 +150,7 @@ namespace Cuida_.Migrations
                     b.HasIndex("CPF")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Pacientes");
                 });
@@ -177,9 +177,6 @@ namespace Cuida_.Migrations
                     b.Property<string>("TipoRegistro")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("TipoUsuario")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
@@ -202,8 +199,8 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Clinica")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Clinica", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -213,8 +210,8 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Medico", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Medico")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Medico", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -224,21 +221,12 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Paciente", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Paciente")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Paciente", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("Cuida_.Models.Usuarios.Usuario", b =>
-                {
-                    b.Navigation("Clinica");
-
-                    b.Navigation("Medico");
-
-                    b.Navigation("Paciente");
                 });
 #pragma warning restore 612, 618
         }

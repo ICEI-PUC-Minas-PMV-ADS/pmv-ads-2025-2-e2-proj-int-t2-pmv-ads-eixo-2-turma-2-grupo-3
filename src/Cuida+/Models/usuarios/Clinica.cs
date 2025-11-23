@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,10 +17,13 @@ namespace Cuida_.Models.Usuarios
         [Required(ErrorMessage = "CNPJ obrigatório")]
         public string CNPJ { get; set; }
 
-        [Required]
+        // PROPRIEDADE REMOVIDA: public int? ClinicaId { get; set; }
+
+        // NOVO: Chave Estrangeira explícita para o Usuario (FK)
+        // Isso garante que a FK seja criada na tabela Clinicas, e não Usuarios.
         public int UsuarioId { get; set; }
 
-        [ForeignKey("UsuarioId")]
+        // Propriedade de navegação de volta para Usuario
         public Usuario Usuario { get; set; }
     }
 }
