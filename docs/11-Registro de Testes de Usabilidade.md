@@ -40,23 +40,59 @@ Para registrar os indicadores de cada cenário, é preciso manter a coerência c
 | Usuário 4   |      15s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                     |                     | 
 | Usuário 5   |      16s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                       |                     | 
 
-**Cenário 4**:         
+**Cenário 4**: O usuário deseja se cadastrar.        
 | **Usuário**  | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
 |-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
-| Usuário 1   |                    |                                 |                 |                        |                              |                     |      
-| Usuário 2   |                    |                                 |                 |                        |                              |                     |      
-| Usuário 3   |                    |                                 |                 |                        |                              |                     |  
-| Usuário 4   |                    |                                 |                 |                        |                              |                     | 
-| Usuário 5   |                    |                                 |                 |                        |                              |                     | 
+| Usuário 1   |     3min10s          |   20                          |       sim          |         2               |        Tela de fácil acesso e intuitiva                      |                     |      
+| Usuário 2   |     3min40s               |       23                 |       sim          |         3               |        Tela de fácil acesso e intutiva, porém com erros pouco intuitivos    |                     |      
+| Usuário 3   |     5min45s               |        34                |        sim         |         5               |        Tela com erros pouco intuitivos quando campos são preenchidos errados.  |                     |  
+| Usuário 4   |     2min10s               |        18                |       sim          |         1               |        Tela intuitiva                      |                     | 
+| Usuário 5   |     2min15s              |         19                 |      sim           |         1               |       Tela intuitiva                       |                     | 
 
-**Cenário 5**:         
+**Cenário 5**: O usuário paciente deseja marcar uma consulta.        
 | **Usuário**  | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
 |-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
-| Usuário 1   |                    |                                 |                 |                        |                              |                     |      
-| Usuário 2   |                    |                                 |                 |                        |                              |                     |      
-| Usuário 3   |                    |                                 |                 |                        |                              |                     |  
-| Usuário 4   |                    |                                 |                 |                        |                              |                     | 
-| Usuário 5   |                    |                                 |                 |                        |                              |                     | 
+| Usuário 1   |    7min33s                |             17                    |       Sim          |          2              |         Tela de díficil acesso                     |                     |      
+| Usuário 2   |    9min21s                |            19                     |       Sim          |          3              |         Tela de díficil acesso e muita informação         |                     |      
+| Usuário 3   |    12min13s                |           28                     |      Não           |         5               |         Muita informação pouco intuitiva, muitos passos para chegar até a ação de marcar horário                     |                     |  
+| Usuário 4   |    6min56s                |            16                     |       Sim          |          1              |         Caminho a marcar horário longo                     |                     | 
+| Usuário 5   |    7min53s                |            18                     |       Sim          |          1              |         Caminho a marcar horário longo                      |                     | 
+
+**Cenário 6**: O usuário clinica deseja cadastrar uma nova campanha, para isso, ele acessa a tela de campanhas, clica no botão de "nova campanha" e preenche os campos.        
+| **Usuário**   | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
+|-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
+| Usuário 1    |        1min20s            |      17 cliques          |     Sim         |         0              |       Tela intuitiva, facilidade em preenches os campos.                       |                     |      
+| Usuário 2    |        1min50s            |      18 cliques          |     Sim         |         0              |       Tela intuitiva e simples. Poucos comandos para aplicar a tarefa          |                     |      
+| Usuário 3    |        3min15s            |      28 cliques          |     Sim         |         2              |       Demorou para preencher os campos. Melhorar calendario do campo data          |                     |  
+| Usuário 4    |        1min10s            |      13 cliques          |     Sim         |         0              |       Tela intuitiva e simples. Poucos comandos para aplicar a tarefa         |                     | 
+| Usuário 5    |        1min16s            |      15 cliques          |     Sim         |         0              |       Tela intuitiva e simples. Poucos comandos para aplicar a tarefa           |                     | 
+
+**Cenário 7**: O usuário clinica deseja editar uma campanha, para isso, clica no botão de "editar" e preenche os campos.        
+| **Usuário**  | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
+|-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
+| Usuário 1   |     1min55s           |         5 cliques             |      Sim           |           0             |        Edição simples, com apoio de informações já existentes      |                     |      
+| Usuário 2   |     54s               |         3 cliques             |      Sim           |           0             |       Edição simples e intuitiva, poucas ações a serem executadas          |                     |      
+| Usuário 3   |     2min32s           |         4 cliques             |      Sim           |           0             |       Intuitivo                       |                     |  
+| Usuário 4   |     32s               |         3 cliques             |      Sim           |           0             |       Edição simples e intuitiva, poucas ações a serem executadas               |                     | 
+| Usuário 5   |     33s               |         3 cliques             |      Sim           |           0             |       Edição simples e intuitiva, poucas ações a serem executadas                  |                     | 
+
+**Cenário 8**: O usuário clinica deseja excluir uma campanha, para isso, clica no botão de "excluir".         
+| **Usuário**  | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
+|-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
+| Usuário 1   |      20s              |          4 cliques           |    Sim             |          0              |        Poucas ações para executar a tarefa, intuitivo e acertivo        |                     |      
+| Usuário 2   |      31s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                      |                     |      
+| Usuário 3   |      53s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil entendimento, botões estão intuitivos com a ação    |                     |  
+| Usuário 4   |      15s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                     |                     | 
+| Usuário 5   |      16s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                       |                     | 
+
+**Cenário 9**: O usuário médico deseja visualizar suas consultas marcadas.         
+| **Usuário**  | **Tempo Total (seg)** | **Quantidade de cliques** | **Tarefa foi concluída?** (Sim/Não) | **Erros Cometidos** | **Feedback do Usuário** |
+|-------------|--------------------|---------------------------------|-----------------|------------------------|------------------------------|
+| Usuário 1   |      21s              |          3 cliques           |    Sim             |          0              |        Poucas ações para executar a tarefa, intuitivo e acertivo        |                     |      
+| Usuário 2   |      32s              |          4 cliques           |    Sim             |          0              |        Tarefa de facil execução                      |                     |      
+| Usuário 3   |      59s              |          5 cliques           |    Sim             |          0              |        Tarefa de facil entendimento    |                     |  
+| Usuário 4   |      17s              |          2 cliques           |    Sim             |          0              |        Tarefa de facil execução                     |                     | 
+| Usuário 5   |      18s              |          2 cliques           |    Sim             |          0              |        Tarefa de facil execução                       |                     | 
 
 ## Relatório dos testes de usabilidade 
 
