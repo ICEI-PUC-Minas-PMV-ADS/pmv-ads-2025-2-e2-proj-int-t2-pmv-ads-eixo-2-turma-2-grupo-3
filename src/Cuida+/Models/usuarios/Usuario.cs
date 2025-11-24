@@ -4,14 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cuida_.Models.Usuarios
 {
-    // Enum para identificar o tipo de usuário
-    public enum TipoUsuario
-    {
-        Paciente,
-        Medico,
-        Clinica
-    }
-
     [Table("Usuarios")]
     [Index(nameof(Email), IsUnique = true)]
     public class Usuario
@@ -25,18 +17,8 @@ namespace Cuida_.Models.Usuarios
 
         [Required(ErrorMessage = "Senha obrigatória")]
         public string Senha { get; set; }
-
-        // PROPRIEDADE RESTAURADA: Esta é a coluna STRING que existe no seu DB.
         public string TipoRegistro { get; set; }
-
-        public string Nome { get; set; }
-
-        // PROPRIEDADE ADICIONADA: Esta é a nova coluna ENUM/INT que o EF Core tentará criar.
-        public TipoUsuario? TipoUsuario { get; set; }
-
-
-        public Paciente Paciente { get; set; }
-        public Medico Medico { get; set; }
-        public Clinica Clinica { get; set; }
+        public string? TokenRecuperacao { get; set; }
+        public DateTime? TokenExpiracao { get; set; }
     }
 }

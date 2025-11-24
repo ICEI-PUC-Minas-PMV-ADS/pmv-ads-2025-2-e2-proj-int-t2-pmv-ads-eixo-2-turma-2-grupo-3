@@ -22,6 +22,21 @@ namespace Cuida_.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("CampanhaMedico", b =>
+                {
+                    b.Property<int>("CampanhasId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicosId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CampanhasId", "MedicosId");
+
+                    b.HasIndex("MedicosId");
+
+                    b.ToTable("CampanhaMedico");
+                });
+
             modelBuilder.Entity("Cuida_.Models.Campanha", b =>
                 {
                     b.Property<int>("Id")
@@ -55,6 +70,109 @@ namespace Cuida_.Migrations
                     b.HasIndex("ClinicaId");
 
                     b.ToTable("Campanhas");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Consulta", b =>
+                {
+                    b.Property<int>("IdConsulta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("IdConsulta"));
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("Horario")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("MedicoId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacienteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdConsulta");
+
+                    b.HasIndex("MedicoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("Consultas");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Especialidade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nomenclatura")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Especialidades");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Registros.CNPJ", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Numero")
+                        .IsUnique();
+
+                    b.ToTable("CNPJ");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Registros.CRM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Numero")
+                        .IsUnique();
+
+                    b.ToTable("CRM");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Registros.CadUnico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Numero")
+                        .IsUnique();
+
+                    b.ToTable("Cadunico");
                 });
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
@@ -134,8 +252,9 @@ namespace Cuida_.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("CadUnico")
-                        .HasColumnType("int");
+                    b.Property<string>("CadUnico")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -188,6 +307,21 @@ namespace Cuida_.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("CampanhaMedico", b =>
+                {
+                    b.HasOne("Cuida_.Models.Campanha", null)
+                        .WithMany()
+                        .HasForeignKey("CampanhasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cuida_.Models.Usuarios.Medico", null)
+                        .WithMany()
+                        .HasForeignKey("MedicosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Cuida_.Models.Campanha", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Clinica", "Clinica")
@@ -197,6 +331,25 @@ namespace Cuida_.Migrations
                         .IsRequired();
 
                     b.Navigation("Clinica");
+                });
+
+            modelBuilder.Entity("Cuida_.Models.Consulta", b =>
+                {
+                    b.HasOne("Cuida_.Models.Usuarios.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cuida_.Models.Usuarios.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medico");
+
+                    b.Navigation("Paciente");
                 });
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
@@ -240,7 +393,6 @@ namespace Cuida_.Migrations
 
                     b.Navigation("Paciente");
                 });
-#pragma warning restore 612, 618
         }
     }
 }

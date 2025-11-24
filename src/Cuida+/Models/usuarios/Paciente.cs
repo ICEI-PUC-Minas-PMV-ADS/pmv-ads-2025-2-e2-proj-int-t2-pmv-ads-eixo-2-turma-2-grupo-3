@@ -19,7 +19,7 @@ namespace Cuida_.Models.Usuarios
         public string CPF { get; set; }
 
         [Required(ErrorMessage = "Cadastro Único obrigatório")]
-        public int CadUnico { get; set; }
+        public string CadUnico { get; set; }
 
         [Required]
         public int UsuarioId { get; set; }

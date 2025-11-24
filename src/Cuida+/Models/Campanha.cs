@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Cuida_.Models
 {
@@ -29,5 +30,8 @@ namespace Cuida_.Models
 
         [ForeignKey("ClinicaId")]
         public Clinica Clinica { get; set; }
+
+        // Relação many-to-many com Medico (lista de médicos que aderiram à campanha)
+        public ICollection<Medico> Medicos { get; set; } = new List<Medico>();
     }
 }

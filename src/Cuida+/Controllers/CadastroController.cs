@@ -3,6 +3,7 @@ using Cuida_.Models.Usuarios;
 using Cuida_.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Cuida_.Models.Registros;
 
 namespace Cuida_.Controllers
 {
@@ -14,8 +15,12 @@ namespace Cuida_.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var especialidades = await _context.Especialidades.ToListAsync();
+
+            ViewBag.Especialidades = especialidades;
+
             return View("~/Views/Usuario/Cadastro.cshtml");
         }
 
@@ -27,11 +32,41 @@ namespace Cuida_.Controllers
                 return RedirectToAction("Index");
             }
 
+            switch (cadastroDTO.TipoRegistro)
+            {
+                case "paciente":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CadUnico) || 
+                        !await _context.Set<CadUnico>().AnyAsync(c => c.Numero == cadastroDTO.CadUnico))
+                    {
+                        TempData["Message"] = "CadUnico não encontrado na base de dados. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
+
+                case "medico":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CRM) ||
+                        !await _context.Set<CRM>().AnyAsync(c => c.Numero == cadastroDTO.CRM))
+                    {
+                        TempData["Message"] = "CRM não encontrado na base de dados. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
+
+                case "clinica":
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CNPJ) ||
+                        !await _context.Set<CNPJ>().AnyAsync(c => c.Numero == cadastroDTO.CNPJ))
+                    {
+                        TempData["Message"] = "CNPJ não encontrado na base de dados. Verifique o número informado.";
+                        return RedirectToAction("Index");
+                    }
+                    break;
+            }
+
             try
             {
                 await Cadastrar(cadastroDTO);
                 TempData["Message"] = "Usuário cadastrado com sucesso!";
-                return RedirectToAction("Index");
+                return View("~/Views/Usuario/Login.cshtml");
             }
             catch (DbUpdateException)
             {
@@ -40,7 +75,7 @@ namespace Cuida_.Controllers
             }
             catch (Exception)
             {
-                TempData["Message"] = "Erro interno ao cadastrar usuário. Tente novamente mais tarde";
+                TempData["Message"] = "Favor preencher todos os campos.";
                 return RedirectToAction("Index");
             }
         }
@@ -55,7 +90,7 @@ namespace Cuida_.Controllers
                     {
                         Nome = cadastroDTO.Nome,
                         CPF = cadastroDTO.CPF,
-                        CadUnico = (int)cadastroDTO.CadUnico,
+                        CadUnico = cadastroDTO.CadUnico,
                         UsuarioId = usuario.Id
                     };
 

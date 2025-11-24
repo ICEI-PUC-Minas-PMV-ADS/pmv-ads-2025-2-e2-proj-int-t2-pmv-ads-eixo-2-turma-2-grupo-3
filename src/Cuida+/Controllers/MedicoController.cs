@@ -17,7 +17,6 @@ namespace Cuida_.Controllers
             _context = context;
         }
 
-        // GET: /medico
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
@@ -36,7 +35,6 @@ namespace Cuida_.Controllers
             return View(medicos);
         }
 
-        // GET: /medico/campanhas
         [HttpGet("campanhas")]
         public async Task<IActionResult> CampanhasDisponiveis()
         {

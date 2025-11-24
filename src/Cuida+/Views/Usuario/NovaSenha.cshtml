@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "Nova Senha";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .recuperar-wrapper {
+            width: 100%;
+            height: 100vh;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container-password {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .recuperar-form {
+            width: 40%;
+        }
+
+        .recuperar-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .recuperar-img img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 20px;
+        }
+
+        label {
+            font-weight: 400;
+        }
+
+        .btn-enviar {
+            background: #0D99FF;
+            color: white;
+            font-weight: 600;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+            font-size: 16px;
+            box-shadow: 0px 1px 3px 0px black;
+        }
+
+        p {
+            color: #515151;
+        }
+
+        h1, label {
+            color: #030303;
+        }
+
+        input {
+            border: 1px solid #C4C4C4;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        @@media(max-width: 1300px) {
+            .recuperar-form {
+                width: 60% !important;
+            }
+
+            .container-password {
+                align-items: center;
+            }
+        }
+
+        @@media(max-width: 930px) {
+            .recuperar-form {
+                width: 60% !important;
+            }
+
+            .container-password {
+                align-items: center;
+                width: 100%;
+            }
+
+            .recuperar-img {
+                display: none;
+            }
+        }
+
+        /* MOBILE */
+        @@media(max-width: 900px) {
+            .recuperar-wrapper {
+                flex-direction: column;
+                padding: 30px;
+                justify-content: center;
+            }
+
+            .recuperar-img {
+                display: none;
+            }
+
+            .btn-enviar {
+                width: 100%;
+            }
+        }
+
+        @@media(max-width: 500px) {
+            .recuperar-form {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="recuperar-wrapper shadow">
+            <div class="container-password">
+                <div class="recuperar-form">
+                    <h1 class="fw-bold mb-3">NOVA SENHA</h1>
+
+                    <p class="text-muted" style="font-size: 14px;">
+                        Digite sua nova senha para concluir a recuperação da conta.
+                    </p>
+
+                    @if (TempData["Erro"] != null)
+                    {
+                    <div style="background:#ffb3b3; padding:10px; border-radius:5px; color:#7a0000; margin-bottom:15px;">
+                        @TempData["Erro"]
+                    </div>
+                    }
+
+                    @if (TempData["Sucesso"] != null)
+                    {
+                    <div style="background:#c3f7c3; padding:10px; border-radius:5px; color:#0f6b00; margin-bottom:15px;">
+                        @TempData["Sucesso"]
+                    </div>
+                    }
+
+                    <form action="/novasenha" method="post">
+                        <input type="hidden" name="token" value="@ViewBag.Token" />
+
+                        <div class="mb-3 text-start">
+                            <label>Nova Senha</label>
+                            <input type="password" name="senha" class="form-control" placeholder="Digite a nova senha" required />
+                        </div>
+
+                        <div class="mb-3 text-start" style="margin-top: 10px;">
+                            <label>Confirmar Senha</label>
+                            <input type="password" name="confirmar" class="form-control" placeholder="Confirme a nova senha" required />
+                        </div>
+
+                        <button type="submit" class="btn-enviar">ALTERAR SENHA</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="recuperar-img">
+                <img src="~/images/imageLogin.png" />
+            </div>
+        </div>
+    </main>
+</body>
+</html>

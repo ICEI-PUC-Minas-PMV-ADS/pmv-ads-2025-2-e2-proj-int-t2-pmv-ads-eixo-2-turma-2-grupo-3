@@ -7,12 +7,72 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Cuida_.Migrations
 {
     /// <inheritdoc />
-    public partial class _01createentities : Migration
+    public partial class _04updateentities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Cadunico",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Numero = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cadunico", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CNPJ",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Numero = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CNPJ", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CRM",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Numero = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CRM", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Especialidades",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nomenclatura = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Especialidades", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -26,7 +86,10 @@ namespace Cuida_.Migrations
                     Senha = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TipoRegistro = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TokenRecuperacao = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TokenExpiracao = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,7 +157,8 @@ namespace Cuida_.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CPF = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CadUnico = table.Column<int>(type: "int", nullable: false),
+                    CadUnico = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -136,6 +200,71 @@ namespace Cuida_.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Consultas",
+                columns: table => new
+                {
+                    IdConsulta = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PacienteId = table.Column<int>(type: "int", nullable: false),
+                    MedicoId = table.Column<int>(type: "int", nullable: false),
+                    Data = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Horario = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Consultas", x => x.IdConsulta);
+                    table.ForeignKey(
+                        name: "FK_Consultas_Medicos_MedicoId",
+                        column: x => x.MedicoId,
+                        principalTable: "Medicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Consultas_Pacientes_PacienteId",
+                        column: x => x.PacienteId,
+                        principalTable: "Pacientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CampanhaMedico",
+                columns: table => new
+                {
+                    CampanhasId = table.Column<int>(type: "int", nullable: false),
+                    MedicosId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CampanhaMedico", x => new { x.CampanhasId, x.MedicosId });
+                    table.ForeignKey(
+                        name: "FK_CampanhaMedico_Campanhas_CampanhasId",
+                        column: x => x.CampanhasId,
+                        principalTable: "Campanhas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CampanhaMedico_Medicos_MedicosId",
+                        column: x => x.MedicosId,
+                        principalTable: "Medicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cadunico_Numero",
+                table: "Cadunico",
+                column: "Numero",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CampanhaMedico_MedicosId",
+                table: "CampanhaMedico",
+                column: "MedicosId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Campanhas_ClinicaId",
                 table: "Campanhas",
@@ -151,6 +280,28 @@ namespace Cuida_.Migrations
                 name: "IX_Clinicas_UsuarioId",
                 table: "Clinicas",
                 column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CNPJ_Numero",
+                table: "CNPJ",
+                column: "Numero",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Consultas_MedicoId",
+                table: "Consultas",
+                column: "MedicoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Consultas_PacienteId",
+                table: "Consultas",
+                column: "PacienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CRM_Numero",
+                table: "CRM",
+                column: "Numero",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Medicos_CRM",
@@ -184,6 +335,24 @@ namespace Cuida_.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Cadunico");
+
+            migrationBuilder.DropTable(
+                name: "CampanhaMedico");
+
+            migrationBuilder.DropTable(
+                name: "CNPJ");
+
+            migrationBuilder.DropTable(
+                name: "Consultas");
+
+            migrationBuilder.DropTable(
+                name: "CRM");
+
+            migrationBuilder.DropTable(
+                name: "Especialidades");
+
             migrationBuilder.DropTable(
                 name: "Campanhas");
 

@@ -12,7 +12,7 @@ namespace Cuida_.Models.Usuarios.Dto
         public string? TipoRegistro { get; set; }
 
         public string? CPF { get; set; }
-        public int? CadUnico { get; set; }
+        public string? CadUnico { get; set; }
         public string? CRM { get; set; }
         public string? Especialidade { get; set; }
         public string? NomeClinica { get; set; }
