@@ -1,0 +1,137 @@
+﻿@model Cuida_.Models.Usuarios.Medico
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+@await Html.PartialAsync("_MenuPartial")
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        background-color: #f0f2f5;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center; /* centraliza horizontal */
+        align-items: center;     /* centraliza vertical */
+        height: 100%;            /* ocupa a altura total da tela */
+        padding: 20px;
+    }
+
+    .profile-card {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        padding: 50px 40px;
+        border-radius: 25px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+        width: 100%;
+        max-width: 800px;
+        transition: all 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .profile-card h4 {
+        font-weight: 700;
+        color: #222;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .form-control[disabled] {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        color: #495057;
+        border-radius: 12px;
+        padding: 12px;
+    }
+
+    label.fw-bold {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+
+    .btn-editar, .btn-alterar {
+        border-radius: 12px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-editar {
+        background-color: #0086FF;
+        border: none;
+        color: #fff;
+    }
+
+    .btn-editar:hover {
+        background-color: #006fd1;
+    }
+
+    .btn-alterar {
+        background-color: #0069D9;
+        border: none;
+        color: #fff;
+    }
+
+    .btn-alterar:hover {
+        background-color: #0056b3;
+    }
+
+    .text-end {
+        margin-top: 40px;
+    }
+
+    .row.g-3 > .col-md-6 {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="main-content">
+    <div class="profile-card">
+
+        <h4>@Model.Nome</h4>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label class="fw-bold">Nome completo</label>
+                <input class="form-control" value="@Model.Nome" disabled />
+            </div>
+
+            <div class="col-md-6">
+                <label class="fw-bold">Email</label>
+                <input class="form-control" value="@(Model.Usuario?.Email ?? "Não informado")" disabled />
+            </div>
+
+            <div class="col-md-6">
+                <label class="fw-bold">Especialidade</label>
+                <input class="form-control" value="@Model.Especialidade" disabled />
+            </div>
+
+            <div class="col-md-6">
+                <label class="fw-bold">CRM</label>
+                <input class="form-control" value="@Model.CRM" disabled />
+            </div>
+
+        </div>
+
+        <div class="text-end">
+            <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-editar me-3">EDITAR</a>
+            <a asp-controller="Usuario" asp-action="MudarSenha" class="btn btn-primary px-5 btn-alterar">
+    MUDAR SENHA
+</a>
+
+        </div>
+
+    </div>
+</div>
