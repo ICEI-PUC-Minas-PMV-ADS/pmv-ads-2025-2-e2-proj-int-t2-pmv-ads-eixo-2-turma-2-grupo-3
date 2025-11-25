@@ -73,7 +73,7 @@ namespace Cuida_.Controllers
             return RedirectToAction("registrarMedico");
         }
 
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Medico medico)
         {
@@ -112,7 +112,7 @@ namespace Cuida_.Controllers
             return RedirectToAction("registrarMedico");
         }
 
-        [HttpPost]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {

@@ -25,7 +25,7 @@ namespace Cuida_.Controllers
             return View("horariosMarcadosPaciente", consultas);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             var consulta = await _context.Consultas.FindAsync(id);

@@ -1,6 +1,5 @@
 ﻿using Cuida_.Models;
 using Cuida_.Models.Usuarios;
-using Cuida_.Models.ViewModels;
 using Cuida_.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +16,7 @@ namespace Cuida_.Controllers
             _context = context;
         }
 
-        [HttpGet("")]
+        /*[HttpGet("")]
         public async Task<IActionResult> Index()
         {
             var medicos = await _context.Medicos
@@ -33,7 +32,7 @@ namespace Cuida_.Controllers
                 .ToListAsync();
 
             return View(medicos);
-        }
+        }*/
 
         [HttpGet("campanhas")]
         public async Task<IActionResult> CampanhasDisponiveis()

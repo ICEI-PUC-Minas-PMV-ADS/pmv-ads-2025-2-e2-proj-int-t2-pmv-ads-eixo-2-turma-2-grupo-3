@@ -16,6 +16,8 @@ namespace Cuida_.Models.Usuarios
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "CPF obrigatório")]
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "CPF deve conter exatamente 11 dígitos (somente números).")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "CPF deve ter exatamente 11 caracteres.")]
         public string CPF { get; set; }
 
         [Required(ErrorMessage = "Cadastro Único obrigatório")]

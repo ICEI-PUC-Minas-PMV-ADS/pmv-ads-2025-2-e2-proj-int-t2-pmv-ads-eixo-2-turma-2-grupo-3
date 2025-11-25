@@ -127,7 +127,8 @@ namespace Cuida_.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(14)
+                        .HasColumnType("varchar(14)");
 
                     b.HasKey("Id");
 
@@ -146,7 +147,8 @@ namespace Cuida_.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.HasKey("Id");
 
@@ -165,7 +167,8 @@ namespace Cuida_.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Numero")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
 
                     b.HasKey("Id");
 
@@ -185,7 +188,8 @@ namespace Cuida_.Migrations
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(14)
+                        .HasColumnType("varchar(14)");
 
                     b.Property<string>("NomeClinica")
                         .IsRequired()
@@ -199,8 +203,7 @@ namespace Cuida_.Migrations
                     b.HasIndex("CNPJ")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Clinicas");
                 });
@@ -215,7 +218,8 @@ namespace Cuida_.Migrations
 
                     b.Property<string>("CRM")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.Property<string>("Especialidade")
                         .IsRequired()
@@ -226,18 +230,16 @@ namespace Cuida_.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("UsuarioId");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CRM")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
-                    b.ToTable("Medicos", (string)null);
+                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("Cuida_.Models.Usuarios.Paciente", b =>
@@ -250,7 +252,8 @@ namespace Cuida_.Migrations
 
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("CadUnico")
                         .IsRequired()
@@ -268,8 +271,7 @@ namespace Cuida_.Migrations
                     b.HasIndex("CPF")
                         .IsUnique();
 
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Pacientes");
                 });
@@ -286,9 +288,6 @@ namespace Cuida_.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Nome")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -296,8 +295,11 @@ namespace Cuida_.Migrations
                     b.Property<string>("TipoRegistro")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("TipoUsuario")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("TokenExpiracao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("TokenRecuperacao")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -355,8 +357,8 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Clinica", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Clinica")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Clinica", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -366,8 +368,8 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Medico", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Medico")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Medico", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -377,22 +379,14 @@ namespace Cuida_.Migrations
             modelBuilder.Entity("Cuida_.Models.Usuarios.Paciente", b =>
                 {
                     b.HasOne("Cuida_.Models.Usuarios.Usuario", "Usuario")
-                        .WithOne("Paciente")
-                        .HasForeignKey("Cuida_.Models.Usuarios.Paciente", "UsuarioId")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
                 });
-
-            modelBuilder.Entity("Cuida_.Models.Usuarios.Usuario", b =>
-                {
-                    b.Navigation("Clinica");
-
-                    b.Navigation("Medico");
-
-                    b.Navigation("Paciente");
-                });
+#pragma warning restore 612, 618
         }
     }
 }

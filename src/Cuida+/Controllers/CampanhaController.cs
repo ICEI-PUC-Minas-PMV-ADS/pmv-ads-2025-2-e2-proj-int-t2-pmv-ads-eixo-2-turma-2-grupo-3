@@ -119,7 +119,7 @@ namespace Cuida_.Controllers
             
             return View(dados);
         }
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Edit(int id, Campanha campanha)
         {
             var usuario = await GetCurrentUsuarioAsync();
@@ -189,7 +189,7 @@ namespace Cuida_.Controllers
 
             return View(dados);
         }
-        [HttpPost,ActionName("Delete")]    
+        [HttpDelete,ActionName("Delete")]    
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             var usuario = await GetCurrentUsuarioAsync();
