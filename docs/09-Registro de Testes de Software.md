@@ -56,13 +56,24 @@ Para cada caso de teste definido no Plano de Testes de Software, realize o regis
 
 ## Relatório de testes de software
 
-Apresente e discuta detalhadamente os resultados obtidos nos testes realizados, destacando tanto os pontos fortes quanto as fragilidades identificadas na solução. Explique como os aspectos positivos contribuem para o desempenho e a usabilidade do sistema, e como os pontos fracos impactam sua eficácia.
+Os resultados obtidos nos testes foram satisfatórios com exceção de testes além do escopo documentado, os casos de teste: CT6, CT7 e CT11 no plano de testes não foram efetuados devido as funcionalides não terem sido desenvolvidas em tempo hábil.
 
-Descreva as principais falhas detectadas durante os testes, fornecendo exemplos concretos e evidências que sustentem essas observações. Explicite os impactos dessas falhas na experiência do usuário, na funcionalidade do sistema e nos objetivos do projeto.
+Pontos fortes: 
+- Funcionalidades intuitivas, simples de serem executadas e com tratamentos de erros corretos; 
+- Layout responsivo;
+- Densidade de informações adequada;
 
-Com base nessas análises, detalhe as estratégias que o grupo pretende adotar para corrigir as deficiências e aprimorar a solução nas próximas iterações. Inclua ações específicas, como ajustes no código, modificações na interface, otimizações de desempenho ou melhorias na acessibilidade e usabilidade.
+Pontos fracos: 
+- Funcionalidades não desenvolvidas conforme escopo do teste;
+- Testes fora do escopo;
 
-Por fim, apresente e/ou proponha as melhorias a partir dos testes realizados, destacando os ganhos obtidos e como essas alterações contribuem para a evolução do projeto.
+Os aspectos positivos descritos acima contribuem para que o usuário tenha uma experiência tranquila ao efetuar seu cadastro, login e consecutivamente as ações conforme o tipo de usuário: paciente, médico ou clínica. Enquanto as negativas que ele não poderá efetuar certas ações conforme foi acordado no plano de testes.
+
+Melhorias a serem consideradas:
+- Desenvolvimento das funcionalidades faltantes por parte de agendamento de consultas;
+- Melhor documentação das rotas conforme verbos HTTP e ações no sistema;
+- Possibilitar busca ao selecionar especialidades no cadastro de médico;
+- Botão de logout no menu lateral;
 
 > **Ferramentas utilizadas**:
 > - [Gravação de tela](https://support.microsoft.com/en-us/windows/use-snipping-tool-to-capture-screenshots-00246869-1843-655f-f220-97299b865f6b)
