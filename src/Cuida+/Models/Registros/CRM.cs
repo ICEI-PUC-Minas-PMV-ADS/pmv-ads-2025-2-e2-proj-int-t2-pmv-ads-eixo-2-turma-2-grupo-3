@@ -8,7 +8,10 @@ namespace Cuida_.Models.Registros
     [Index(nameof(Numero), IsUnique = true)]
     public class CRM
     {
+        [Key]
         public int Id { get; set; }
+
+        [StringLength(8, MinimumLength = 8)]
         public string Numero { get; set; }
     }
 }

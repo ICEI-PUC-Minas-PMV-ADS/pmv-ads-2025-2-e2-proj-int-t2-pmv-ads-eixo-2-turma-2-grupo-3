@@ -45,7 +45,6 @@ namespace Cuida_.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

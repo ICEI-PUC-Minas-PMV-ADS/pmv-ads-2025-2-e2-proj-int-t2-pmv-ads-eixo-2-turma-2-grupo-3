@@ -25,9 +25,10 @@ namespace Cuida_.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UsuarioCadastroDTO cadastroDTO) 
+        public async Task<IActionResult> Index(UsuarioCadastroDTO cadastroDTO)
         {
-            if(!ModelState.IsValid)             {
+            if (!ModelState.IsValid)
+            {
                 TempData["Message"] = "Erro ao cadastrar usuário. \n Verifique os dados";
                 return RedirectToAction("Index");
             }
@@ -35,7 +36,7 @@ namespace Cuida_.Controllers
             switch (cadastroDTO.TipoRegistro)
             {
                 case "paciente":
-                    if (string.IsNullOrWhiteSpace(cadastroDTO.CadUnico) || 
+                    if (string.IsNullOrWhiteSpace(cadastroDTO.CadUnico) ||
                         !await _context.Set<CadUnico>().AnyAsync(c => c.Numero == cadastroDTO.CadUnico))
                     {
                         TempData["Message"] = "CadUnico não encontrado na base de dados. Verifique o número informado.";
@@ -83,7 +84,7 @@ namespace Cuida_.Controllers
         {
             var usuario = await CadastrarUsuario(cadastroDTO);
 
-            switch(usuario.TipoRegistro)
+            switch (usuario.TipoRegistro)
             {
                 case "paciente":
                     var paciente = new Paciente
@@ -123,11 +124,13 @@ namespace Cuida_.Controllers
             }
         }
 
-        private async Task<Usuario> CadastrarUsuario(UsuarioCadastroDTO cadastroDTO) {
+        private async Task<Usuario> CadastrarUsuario(UsuarioCadastroDTO cadastroDTO)
+        {
 
             string senhaCodificada = BCrypt.Net.BCrypt.HashPassword(cadastroDTO.Senha);
 
-            var usuario = new Usuario { 
+            var usuario = new Usuario
+            {
                 Email = cadastroDTO.Email,
                 Senha = senhaCodificada,
                 TipoRegistro = cadastroDTO.TipoRegistro

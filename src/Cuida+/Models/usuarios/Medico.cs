@@ -17,6 +17,8 @@ namespace Cuida_.Models.Usuarios
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O CRM é obrigatório.")]
+        [RegularExpression(@"^[A-Z]{2}\d{6}$", ErrorMessage = "CRM deve ter formato UF123456 (2 letras maiúsculas + 6 dígitos).")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "CRM deve ter exatamente 8 caracteres.")]
         public string CRM { get; set; }
 
         [Required(ErrorMessage = "Especialidade obrigatória")]
@@ -28,7 +30,6 @@ namespace Cuida_.Models.Usuarios
         [ForeignKey("UsuarioId")]
         public Usuario Usuario { get; set; }
 
-        // Relação many-to-many com Campanha (campanhas em que o médico aderiu)
         public ICollection<Cuida_.Models.Campanha> Campanhas { get; set; } = new List<Cuida_.Models.Campanha>();
     }
 }

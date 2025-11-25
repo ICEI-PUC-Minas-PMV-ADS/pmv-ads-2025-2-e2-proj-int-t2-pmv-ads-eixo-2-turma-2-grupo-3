@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cuida_.Models.Registros
 {
-    [Table("CNPJ")]
+    [Table("Cadunico")]
     [Index(nameof(Numero), IsUnique = true)]
-    public class CNPJ
+    public class CadUnico
     {
         [Key]
         public int Id { get; set; }
 
-        [StringLength(14, MinimumLength = 14)]
+        [StringLength(11, MinimumLength = 11)]
         public string Numero { get; set; }
     }
 }

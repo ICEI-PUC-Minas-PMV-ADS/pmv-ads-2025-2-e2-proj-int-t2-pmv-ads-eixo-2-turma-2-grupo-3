@@ -95,7 +95,6 @@
 
                     <label asp-for="Especialidade">Especialidade</label>
                     <select asp-for="Especialidade" id="tipoRegistro" class="form-control">
-                                        <option value="">Selecione a especialidade</option>
                                         @foreach (var esp in ViewBag.Especialidades)
                                         {
                                             <option value="@esp.Nomenclatura">@esp.Nomenclatura</option>
