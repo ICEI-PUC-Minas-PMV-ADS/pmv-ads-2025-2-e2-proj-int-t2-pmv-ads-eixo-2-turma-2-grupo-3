@@ -6,32 +6,59 @@
 
         <ul class="nav-icons">
             <li>
-                <a href="#">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Clínicas próximas</span>
+                <a href="/home">
+                    <i class="bi bi-house"></i>
+                    <span>Home</span>
                 </a>
             </li>
+            @if (User.IsInRole("clinica"))
+            {
             <li>
-                <a href="#">
+                <a href="/clinica/cadastrarmedico">
                     <i class="bi bi-heart-pulse"></i>
-                    <span>Solicitar atendimento</span>
+                    <span>Cadastrar médico</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/Campanha">
                     <i class="bi bi-book"></i>
-                    <span>Minhas consultas</span>
+                    <span>Gerenciar campanhas</span>
                 </a>
             </li>
+            }
+            @if (User.IsInRole("medico"))
+            {
+            <li>
+                <a href="/medico/horariosMarcados">
+                    <i class="bi bi-heart-pulse"></i>
+                    <span>Horários marcados</span>
+                </a>
+            </li>
+            <li>
+                <a href="/medico/campanhas">
+                    <i class="bi bi-book"></i>
+                    <span>Aderir campanha</span>
+                </a>
+            </li>
+            }
+            @if (User.IsInRole("medico"))
+            {
+                <li>
+                    <a href="/paciente/horariosMarcados">
+                        <i class="bi bi-heart-pulse"></i>
+                        <span>Horários marcados</span>
+                    </a>
+                </li>
+            }
         </ul>
     </div>
 
     <div class="menu-bottom">
         <ul class="nav-icons">
             <li>
-                <a href="#">
-                    <i class="bi bi-envelope"></i>
-                    <span>Notificações</span>
+                <a asp-controller="Login" asp-action="Logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sair</span>
                 </a>
             </li>
             <li>
@@ -46,10 +73,51 @@
 
 <!-- MENU MOBILE -->
 <nav class="mobile-bar">
-    <a href="#"><i class="bi bi-geo-alt"></i></a>
-    <a href="#"><i class="bi bi-heart-pulse"></i></a>
-    <a href="#"><i class="bi bi-book"></i></a>
-    <a href="#"><i class="bi bi-envelope"></i></a>
+    
+    <li>
+        <a href="/home">
+            <i class="bi bi-house"></i>
+        </a>
+    </li>
+    @if (User.IsInRole("clinica"))
+    {
+    <li>
+        <a href="clinica/cadastrarmedico">
+            <i class="bi bi-heart-pulse"></i>
+        </a>
+    </li>
+    <li>
+        <a href="clinica/cadastrarmedico">
+            <i class="bi bi-book"></i>
+        </a>
+    </li>
+    }
+    @if (User.IsInRole("medico"))
+    {
+    <li>
+        <a href="/medico/horariosMarcados">
+            <i class="bi bi-heart-pulse"></i>
+        </a>
+    </li>
+    <li>
+        <a href="/medico/campanhas">
+            <i class="bi bi-book"></i>
+        </a>
+    </li>
+    }
+    @if (User.IsInRole("medico"))
+    {
+    <li>
+        <a href="/paciente/horariosMarcados">
+            <i class="bi bi-heart-pulse"></i>
+        </a>
+    </li>
+    }
+    <li>
+        <a asp-controller="Login" asp-action="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+        </a>
+    </li>
     <a href="#"><i class="bi bi-person-circle"></i></a>
 </nav>
 
