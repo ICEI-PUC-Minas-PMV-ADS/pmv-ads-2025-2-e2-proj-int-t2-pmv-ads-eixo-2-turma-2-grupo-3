@@ -62,26 +62,24 @@ namespace Cuida_.Controllers
             return View(geral);
         }
 
-        public async Task<IActionResult> Details(int? id)
+        [Authorize(Roles = "paciente")]
+        [HttpGet("paciente/campanhas/{id}/medicos")]
+        public async Task<IActionResult> MedicosAderidos(int id)
         {
-            if (id == null) return NotFound();
+            var campanha = await _context.Campanhas
+                .Include(c => c.Medicos)
+                    .ThenInclude(m => m.Usuario)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
-            var consulta = await _context.Consultas
-                .Include(c => c.Medico).ThenInclude(m => m.Usuario)
-                .Include(c => c.Paciente).ThenInclude(p => p.Usuario)
-                .FirstOrDefaultAsync(c => c.IdConsulta == id);
+            if (campanha == null)
+                return NotFound();
 
-            if (consulta == null) return NotFound();
+            var medicos = campanha.Medicos.ToList();
 
-            var email = User.FindFirstValue(ClaimTypes.Email);
+            ViewBag.CampanhaId = campanha.Id;
+            ViewBag.CampanhaNome = campanha.NomeCampanha;
 
-            if (User.IsInRole("Paciente") && consulta.Paciente.Usuario.Email != email)
-                return Unauthorized();
-
-            if (User.IsInRole("Medico") && consulta.Medico.Usuario.Email != email)
-                return Unauthorized();
-
-            return View(consulta);
+            return View("~/Views/Medico/MedicosAderidos.cshtml", medicos);
         }
 
         [Authorize(Roles = "Paciente")]
@@ -252,29 +250,44 @@ namespace Cuida_.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Agendar()
+        [Authorize(Roles = "paciente")]
+        [HttpGet("paciente/campanhas/{campanhaId}/medicos/{medicoId}/horarios")]
+        public async Task<IActionResult> AgendarView(int campanhaId, int medicoId)
         {
-            return View();
-        }
+            var campanha = await _context.Campanhas
+                .FirstOrDefaultAsync(c => c.Id == campanhaId);
 
-        [Authorize]
-        public async Task<IActionResult> AgendarView()
-        {
-            var dias = GetProximosDiasUteis(10);
+            if (campanha == null) return NotFound();
 
-            var horarios = new List<TimeSpan>
+            var medico = await _context.Medicos
+                .Include(m => m.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == medicoId);
+
+            if (medico == null) return NotFound();
+
+            // dias entre início e fim da campanha (incluindo sáb/dom se tiver)
+            var dias = new List<DateTime>();
+            var atual = campanha.DataInicio.Date;
+            var limite = campanha.DataFim.Date;
+
+            while (atual <= limite)
             {
-                new TimeSpan(9,0,0),
-                new TimeSpan(10,0,0),
-                new TimeSpan(11,0,0),
-                new TimeSpan(13,0,0),
-                new TimeSpan(14,0,0),
-                new TimeSpan(15,0,0),
-                new TimeSpan(16,0,0),
-                new TimeSpan(17,0,0)
-            };
+                dias.Add(atual);
+                atual = atual.AddDays(1);
+            }
 
+            // horários de 9h às 17h, de 1 em 1h
+            var horarios = new List<TimeSpan>();
+            for (int h = 9; h <= 17; h++)
+            {
+                horarios.Add(new TimeSpan(h, 0, 0));
+            }
+
+            // slots ocupados para esse médico dentro da campanha
             var ocupados = await _context.Consultas
+                .Where(c => c.MedicoId == medicoId &&
+                            c.Data >= campanha.DataInicio.Date &&
+                            c.Data <= campanha.DataFim.Date)
                 .Select(c => new DateTime(
                     c.Horario.Year,
                     c.Horario.Month,
@@ -289,7 +302,9 @@ namespace Cuida_.Controllers
             {
                 Dias = dias,
                 Horarios = horarios,
-                SlotsOcupados = ocupados
+                SlotsOcupados = ocupados,
+                Medico = medico,
+                Campanha = campanha
             };
 
             return View("Agendar", model);
@@ -298,12 +313,11 @@ namespace Cuida_.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarAgendamento(string Horario)
+        public async Task<IActionResult> ConfirmarAgendamento(string Horario, int medicoId, int campanhaId)
         {
             if (string.IsNullOrEmpty(Horario)) return BadRequest();
 
-            long ticks;
-            if (!long.TryParse(Horario, out ticks)) return BadRequest();
+            if (!long.TryParse(Horario, out long ticks)) return BadRequest();
 
             var paciente = await _context.Pacientes.Include(p => p.Usuario)
                 .FirstOrDefaultAsync(p => p.Usuario.Email == User.FindFirstValue(ClaimTypes.Email));
@@ -321,9 +335,10 @@ namespace Cuida_.Controllers
                 0
             );
 
+            // médico ocupado?
             bool medicoOcupado = await _context.Consultas
                 .AnyAsync(c =>
-                    c.MedicoId == 1 &&
+                    c.MedicoId == medicoId &&
                     c.Horario.Year == horarioNormalizado.Year &&
                     c.Horario.Month == horarioNormalizado.Month &&
                     c.Horario.Day == horarioNormalizado.Day &&
@@ -333,6 +348,7 @@ namespace Cuida_.Controllers
 
             if (medicoOcupado) return Conflict();
 
+            // paciente ocupado?
             bool pacienteOcupado = await _context.Consultas
                 .AnyAsync(c =>
                     c.PacienteId == paciente.Id &&
@@ -348,36 +364,47 @@ namespace Cuida_.Controllers
             var consulta = new Consulta
             {
                 PacienteId = paciente.Id,
-                MedicoId = 1,
+                MedicoId = medicoId,
                 Data = horarioNormalizado.Date,
                 Horario = horarioNormalizado
+                // se Consulta tiver CampanhaId, você coloca aqui
+                // CampanhaId = campanhaId
             };
 
             _context.Consultas.Add(consulta);
             await _context.SaveChangesAsync();
 
             TempData["SucessoAgendamento"] = true;
-            return RedirectToAction("AgendarView");
+
+            return RedirectToAction("AgendarView", new { campanhaId, medicoId });
         }
 
-        private List<DateTime> GetProximosDiasUteis(int quantidade)
+        [HttpGet("paciente/campanhasDisponiveis")]
+        public async Task<IActionResult> ListarCampanhasPaciente(
+            string? nome,
+            string? especialidade,
+            DateTime? dataInicio,
+            DateTime? dataFim)
         {
-            var dias = new List<DateTime>();
-            var atual = DateTime.Today;
-            var limite = atual.AddDays(14);
+            var query = _context.Campanhas.AsQueryable();
 
-            while (dias.Count < quantidade && atual <= limite)
-            {
-                if (atual.DayOfWeek != DayOfWeek.Saturday &&
-                    atual.DayOfWeek != DayOfWeek.Sunday)
-                {
-                    dias.Add(atual);
-                }
+            if (!string.IsNullOrWhiteSpace(nome))
+                query = query.Where(c => c.NomeCampanha.Contains(nome));
 
-                atual = atual.AddDays(1);
-            }
+            if (!string.IsNullOrWhiteSpace(especialidade))
+                query = query.Where(c => c.Descricao.Contains(especialidade));
 
-            return dias;
+            if (dataInicio.HasValue)
+                query = query.Where(c => c.DataInicio >= dataInicio.Value);
+
+            if (dataFim.HasValue)
+                query = query.Where(c => c.DataFim <= dataFim.Value);
+
+            var campanhas = await query
+                .OrderBy(c => c.DataInicio)
+                .ToListAsync();
+
+            return View("~/Views/Usuario/Campanhas.cshtml", campanhas);
         }
     }
 }
