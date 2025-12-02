@@ -1,0 +1,138 @@
+﻿@using Cuida_.Models.Usuarios
+@model IEnumerable<Medico>
+
+    @{
+    ViewData["Title"] = "Médicos disponíveis";
+    }
+
+    <style>
+        .main-content {
+            margin-left: 80px;
+            padding: 24px 16px 40px;
+        }
+
+        .medicos-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+            .medicos-header .back-icon {
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+
+            .medicos-header h3 {
+                margin: 0;
+                font-weight: 600;
+            }
+
+        .medico-card {
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .medico-nome {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .medico-info p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+            .medico-info p + p {
+                margin-top: 2px;
+            }
+
+        .btn-horarios {
+            margin-top: 12px;
+            align-self: flex-end;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 999px;
+            background-color: #0D99FF;
+            border-color: #0D99FF;
+        }
+
+            .btn-horarios:hover {
+                background-color: #0B82D5;
+                border-color: #0B82D5;
+            }
+
+        /* Mobile */
+        @@media (max-width: 767.98px) {
+            .main-content {
+                margin-left: 0;
+                margin-bottom: 70px; /* espaço pro menu inferior, se tiver */
+            }
+        }
+
+        /* Desktop: 2 colunas */
+        @@media (min-width: 768px) {
+            .medico-col {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+    </style>
+    @await Html.PartialAsync("_MenuPartial")
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="medicos-header">
+                <span class="back-icon" onclick="history.back()">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+                <h3>Médicos disponíveis</h3>
+            </div>
+
+            @if (Model != null && Model.Any())
+        {
+            <div class="row g-3 d-flex flex-wrap">
+                @foreach (var medico in Model)
+                {
+                <div class="medico-col mb-3">
+                    <div class="medico-card">
+                        <div>
+                            <div class="medico-nome">
+                                Dr(a). @medico.Nome
+                            </div>
+
+                            <div class="medico-info">
+                                <p><strong>Especialidade:</strong> @medico.Especialidade</p>
+                                <p><strong>CRM:</strong> @medico.CRM</p>
+                                @if (medico.Usuario != null && !string.IsNullOrWhiteSpace(medico.Usuario.Email))
+                                    {
+                                <p><strong>Email:</strong> @medico.Usuario.Email</p>
+                                    }
+                            </div>
+                        </div>
+
+                        <a class="btn btn-primary btn-horarios"
+                           asp-controller="Consultas"
+                           asp-action="AgendarView"
+                           asp-route-campanhaId="@ViewBag.CampanhaId"
+                           asp-route-medicoId="@medico.Id">
+                            VER HORÁRIOS
+                        </a>
+                    </div>
+                </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Nenhum médico disponível no momento.</p>
+        }
+        </div>
+    </div>

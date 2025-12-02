@@ -41,14 +41,20 @@
                 </a>
             </li>
             }
-            @if (User.IsInRole("medico"))
+            @if (User.IsInRole("paciente"))
             {
-                <li>
-                    <a href="/paciente/horariosMarcados">
-                        <i class="bi bi-heart-pulse"></i>
-                        <span>Horários marcados</span>
-                    </a>
-                </li>
+            <li>
+                <a href="/paciente/horariosMarcados">
+                    <i class="bi bi-heart-pulse"></i>
+                    <span>Horários marcados</span>
+                </a>
+            </li>
+            <li>
+                <a href="/paciente/campanhasDisponiveis">
+                    <i class="bi bi-book"></i>
+                    <span>Marcar horário</span>
+                </a>
+            </li>
             }
         </ul>
     </div>
@@ -73,7 +79,7 @@
 
 <!-- MENU MOBILE -->
 <nav class="mobile-bar">
-    
+
     <li>
         <a href="/home">
             <i class="bi bi-house"></i>
@@ -105,11 +111,16 @@
         </a>
     </li>
     }
-    @if (User.IsInRole("medico"))
+    @if (User.IsInRole("paciente"))
     {
     <li>
         <a href="/paciente/horariosMarcados">
             <i class="bi bi-heart-pulse"></i>
+        </a>
+    </li>
+    <li>
+        <a href="/paciente/campanhasDisponiveis">
+            <i class="bi bi-book"></i>
         </a>
     </li>
     }
@@ -139,6 +150,10 @@
         transition: width 0.3s;
         overflow: hidden;
         z-index: 999;
+    }
+
+    li {
+        list-style: none;
     }
 
     .sidebar.open {
