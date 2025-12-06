@@ -1,0 +1,330 @@
+﻿@model Cuida_.Models.AgendarViewModel
+
+@{
+    ViewData["Title"] = "Agendar Consulta";
+    var culture = new System.Globalization.CultureInfo("pt-BR");
+
+    Dictionary<DayOfWeek, string> diasPt = new()
+    {
+        { DayOfWeek.Monday,    "Segunda" },
+        { DayOfWeek.Tuesday,   "Terça" },
+        { DayOfWeek.Wednesday, "Quarta" },
+        { DayOfWeek.Thursday,  "Quinta" },
+        { DayOfWeek.Friday,    "Sexta" },
+        { DayOfWeek.Saturday,  "Sábado" },
+        { DayOfWeek.Sunday,    "Domingo" }
+    };
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .main-content {
+        margin-left: 80px;
+        padding: 24px 16px 40px;
+    }
+
+    @@media (max-width: 767.98px) {
+        .main-content {
+            margin-left: 0;
+            margin-bottom: 70px;
+        }
+    }
+
+    .doctor-card {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        padding: 20px 24px;
+        margin-bottom: 20px;
+    }
+
+    .doctor-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+    }
+
+    .doctor-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #e6f2ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #0D99FF;
+    }
+
+    .doctor-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .doctor-spec {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .doctor-extra {
+        font-size: 0.85rem;
+        margin: 0;
+    }
+
+    .schedule-card {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        padding: 16px 16px 20px;
+    }
+
+    .schedule-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    table td {
+        padding: 2px !important;
+    }
+
+    .slot-btn,
+    .disabled-slot {
+        padding: 3px 5px;
+        font-size: 0.70rem;
+        width: 70px;
+        border-radius: 4px;
+    }
+
+    th, td {
+        font-size: 0.75rem;
+        vertical-align: middle;
+    }
+
+    .slot-ocupado {
+        background-color: #f8d7da;
+        border-color: #f5c2c7;
+        color: #842029;
+    }
+
+    .slot-passado {
+        background-color: #e9ecef;
+        border-color: #ced4da;
+        color: #6c757d;
+    }
+
+    .back-btn {
+        border: none;
+        background: transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        color: #0D99FF;
+        font-weight: 500;
+    }
+</style>
+
+@await Html.PartialAsync("_MenuPartial")
+
+<div class="main-content">
+    <div class="container-fluid">
+
+        <button type="button" class="back-btn" onclick="history.back()">
+            <i class="bi bi-arrow-left"></i> Voltar
+        </button>
+
+        <div class="doctor-card">
+            <div class="doctor-header">
+                <div class="doctor-avatar">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div>
+                    <p class="doctor-name">Dr(a). @Model.Medico.Nome</p>
+                    <p class="doctor-spec">@Model.Medico.Especialidade</p>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <p class="doctor-extra mb-1"><strong>Campanha:</strong> @Model.Campanha.NomeCampanha</p>
+                    <p class="doctor-extra mb-0">
+                        <strong>Período:</strong>
+                        @Model.Campanha.DataInicio.ToString("dd/MM/yyyy") -
+                        @Model.Campanha.DataFim.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                    <p class="doctor-extra mb-0"><strong>CRM:</strong> @Model.Medico.CRM</p>
+                    @if (Model.Medico.Usuario != null && !string.IsNullOrWhiteSpace(Model.Medico.Usuario.Email))
+                    {
+                    <p class="doctor-extra mb-0"><strong>Email:</strong> @Model.Medico.Usuario.Email</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-card">
+            <h5 class="schedule-title">Horários disponíveis</h5>
+
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered align-middle text-center mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Horário</th>
+                            @foreach (var dia in Model.Dias)
+                            {
+                            <th>@diasPt[dia.DayOfWeek] @dia.ToString("dd/MM")</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var hora in Model.Horarios)
+                        {
+                        <tr>
+                            <td>@hora.ToString(@"hh\:mm")</td>
+
+                            @foreach (var dia in Model.Dias)
+                                {
+                                    var slot = new DateTime(dia.Year, dia.Month, dia.Day, hora.Hours, hora.Minutes, 0);
+                                    var ocupado = Model.SlotsOcupados
+                                        .Any(s => s.Date == slot.Date && s.TimeOfDay == slot.TimeOfDay);
+                                    var passado = slot < DateTime.Now;
+
+                                    if (ocupado)
+                                    {
+                            <td>
+                                <button class="btn btn-danger disabled-slot slot-ocupado" disabled>
+                                    @slot.ToString("HH:mm")
+                                </button>
+                            </td>
+                                    }
+                                    else if (passado)
+                                    {
+                            <td>
+                                <button class="btn btn-secondary disabled-slot slot-passado" disabled>
+                                    @slot.ToString("HH:mm")
+                                </button>
+                            </td>
+                                    }
+                                    else
+                                    {
+                            <td>
+                                <button type="button"
+                                        class="btn btn-primary slot-btn"
+                                        data-slot='@slot.ToString("o")'
+                                        data-ticks="@slot.Ticks">
+                                    @slot.ToString("HH:mm")
+                                </button>
+                            </td>
+                                    }
+                                }
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary mt-3" onclick="history.back()">
+            Voltar
+        </button>
+    </div>
+</div>
+
+<form id="confirmForm" asp-action="ConfirmarAgendamento" method="post">
+    <input type="hidden" name="Horario" id="Horario" />
+    <input type="hidden" name="medicoId" value="@Model.Medico.Id" />
+    <input type="hidden" name="campanhaId" value="@Model.Campanha.Id" />
+    @Html.AntiForgeryToken()
+</form>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Agendamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p id="confirmText"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="confirmBtn" type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SucessoAgendamento"] != null)
+{
+<div class="modal fade" id="sucessoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+            <h5 class="mb-3 text-success">Consulta agendada com sucesso!</h5>
+            <p>Redirecionando...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!window.bootstrap) return;
+
+            const sucessoModal = new bootstrap.Modal(document.getElementById('sucessoModal'));
+            sucessoModal.show();
+
+            setTimeout(() => {
+                window.location.href = '@Url.Action("AgendarView", "Consultas", new { campanhaId = Model.Campanha.Id, medicoId = Model.Medico.Id })';
+            }, 2000);
+        });
+</script>
+}
+
+<script>
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.slot-btn');
+        if (!btn) return;
+
+        const slotIso = btn.getAttribute('data-slot');
+        const slotTicks = btn.getAttribute('data-ticks');
+        const date = new Date(slotIso);
+        const texto = date.toLocaleString("pt-BR");
+
+        const confirmText = document.getElementById('confirmText');
+        const horarioInput = document.getElementById('Horario');
+
+        if (!confirmText || !horarioInput) return;
+
+        confirmText.innerText = "Confirmar agendamento para: " + texto;
+        horarioInput.value = slotTicks;
+
+        if (!window.bootstrap) {
+            alert(confirmText.innerText);
+            document.getElementById('confirmForm').submit();
+            return;
+        }
+
+        const modalElement = document.getElementById('confirmModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    });
+
+    const confirmBtn = document.getElementById('confirmBtn');
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', function () {
+            document.getElementById('confirmForm').submit();
+        });
+    }
+</script>

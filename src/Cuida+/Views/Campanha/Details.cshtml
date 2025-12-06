@@ -1,0 +1,49 @@
+﻿@model Cuida_.Models.Campanha
+@await Html.PartialAsync("_MenuPartial")
+
+@{
+    ViewData["Title"] = "Detalhes da Campanha";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <div class="card-body">
+
+                    <div class="text-center mb-4">
+                        <h2 class="text-primary fw-bold mb-2">Detalhes da campanha</h2>
+                    </div>
+
+                    <div class="bg-light p-3 rounded-3 shadow-sm">
+                        <h5 class="text-primary fw-bold mb-2">@Model.NomeCampanha</h5>
+
+                        <p class="mb-1"><strong>Descrição:</strong> @Model.Descricao</p>
+                        <p class="mb-1"><strong>Clínica:</strong> @Model.Clinica?.NomeClinica</p>
+                        <p class="mb-1"><strong>Início:</strong> @Model.DataInicio.ToString("dd/MM/yyyy")</p>
+                        <p class="mb-1"><strong>Fim:</strong> @Model.DataFim.ToString("dd/MM/yyyy")</p>
+                        <p class="mt-2">
+                            <strong>Status:</strong>
+                            @Html.Raw(Model.Ativa
+                                ? "<span class='badge bg-success'>Ativa</span>"
+                                : "<span class='badge bg-secondary'>Inativa</span>")
+                        </p>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <a asp-action="Index" class="btn btn-outline-primary px-4 py-2 fw-semibold">
+                            Voltar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
